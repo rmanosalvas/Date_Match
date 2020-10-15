@@ -1,20 +1,24 @@
 import React from 'react';
 import Login from '../components/Login';
-import { Col, Row, Container } from '../components/Grid';
+import { Row, Container } from '../components/Grid';
 import Nav from '../components/Nav'
-
+import Col from 'react-bootstrap/Col'
 
 const LoginPage = () => {
     return (
-        <div>
-                <Container >
-                        <Row>
-                            <Col size='md-6'>
-                                <Login />
-                            </Col>
-                        </Row>
-                </Container>
-        </div>
+
+        <Container fluid>
+            <Row>
+                <Col size='col-md-6'>
+                </Col>
+                <Col size='col-md-6'>
+                    <Login />
+                </Col>
+                <Col size='col-md-6'>
+                </Col>
+            </Row>
+        </Container>
+
     );
 };
 
