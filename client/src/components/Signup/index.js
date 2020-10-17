@@ -1,59 +1,119 @@
-import React, { Component } from "react";
-import { Row, Col, Button, Input } from 'react-bootstrap';
-import API from '../../utils/API';
+import React, { Component, useState, useEffect } from "react";
+import { Row, Col, Button, } from 'react-bootstrap';
+// import API from '../../utils/API';
+import API from '../../utils/API.js';
 
-class Signup extends Component {
+function Signup() {
 
-    state = {
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: "",
-        age: "",
-        orientation: "",
-        // avatar: "",
-        gender: "",
-        securityQuestion1: "",
-        securityQuestion2: "",            
-        userPref1: "",
-        userPref2: "",
-        userPref3: "",
-        aboutMe1: "",
-        aboutMe2: "",
-        aboutMe3: "",
-        matches: "",
-        location: ""
 
-    };
+
+    const [users, setUsers] = useState([])
+    const [formObject, setFormObject] = useState([])
+
+
+    // useEffect(() => {
+    //     loadPage()
+    // }, [])
+
+    function loadPage() {
+        console.log("Creating User")
+        API.createUser({
+            email: formObject.title,
+            first_name: formObject.first_name,
+            last_name: formObject.last_name,
+            age: formObject.age,
+            password: formObject.password,
+            orientation: formObject.orientation,
+            gender: formObject.gender
+        })
+        .then(res => setUsers(res.data))
+        .catch(err => console.log(err))
+        
+    }
+
+
+
+ function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({...formObject, [name]: value})
+  };
  
+function handleFormSubmit(event) {
+    event.preventDefault();
+    if (
+        formObject.email && 
+        formObject.first_name && 
+        formObject.last_name &&
+        formObject.age &&
+        formObject.password &&
+        formObject.orientation &&
+        formObject.gender) {
+            loadPage()
+        }
+  };
 
-    render() {
+
         return (
         <div>
             <form className="form-group mt-5 mb5" >
                 <Row className="justify-content-md-center">
                     <Col md={5}>
-                        <h3>Email Address(Username)</h3>
-                        <input className="form-control mb-5" placeholder="email@example.com" required value={this.state.first_name} name="first_name" type="text" />
+                        <h3>Email Address</h3>
+                        <input 
+                            className="form-control mb-5" 
+                            placeholder="email@example.com" 
+                            required 
+                            name="email" 
+                            type="text" 
+                            onChange={handleInputChange}
+                            />
                     </Col>
                     <Col md={3}>
                         <h3>First Name</h3>
-                        <input className="form-control mb-5" placeholder="John/Jane" required/>
+                        <input 
+                            className="form-control mb-5" 
+                            placeholder="John/Jane" 
+                            required 
+                            name="first_name" 
+                            type="text"
+                            onChange={handleInputChange}
+                        />
                     </Col>
                     <Col md={3}>
                         <h3>Last Name</h3>
-                        <input className="form-control mb-5" placeholder="Doe" required/>
+                        <input 
+                            className="form-control mb-5" 
+                            placeholder="Doe" 
+                            required 
+                            name="last_name" 
+                            type="text"
+                            onChange={handleInputChange}
+                        />
                     </Col>
                     <Col md={1}>
                         <h3>Age</h3>
-                        <input className="form-control" type="number" id="age" max="130" min="18" required/>
+                        <input className="form-control" 
+                            type="number" 
+                            id="age" 
+                            max="130" min="18" 
+                            required 
+                            name="age" 
+                            onChange={handleInputChange}
+                        />
                     </Col>
                 </Row>
 
                 <Row className="justify-content-md-center">
                     <Col md={12}>
                         <h3>Password</h3>
-                        <input className="form-control mb-5" placeholder="Hello" />
+                        <input 
+                            className="form-control mb-5" 
+                            placeholder="Hello" 
+                            required 
+                            name="password" 
+                            type="password"
+                            onChange={handleInputChange}
+                            />
                     </Col>
 
                 </Row>
@@ -74,33 +134,37 @@ class Signup extends Component {
                 <Row> 
                     <Col md={6}>
                     <label for="gender">Select Your Pronouns</label>
-                    <select className="form-control" id="gender">
-                    <option selected="selected">--------</option>
-                    <option value>he, him, his</option>
-                    <option value>she, her, her</option>
-                    <option value>they, them, theirs</option>
-                    </select>
+                        <select className="form-control" name="gender" onChange={handleInputChange}>
+                        <option selected="selected">--------</option>
+                        <option value="1">he, him, his</option>
+                        <option value="2">she, her, her</option>
+                        <option value="3">they, them, theirs</option>
+                        </select>
                  </Col>
                  <Col md={6}>
-                 <label for="orientation">Sexual Orientation</label>
-                 <select id="orientation" class="form-control">
-                    <option selected="selected">--------</option>
-                    <option value>Straight</option>
-                    <option value>Gay</option>
-                    <option value>Bisexual</option>
-                </select>
+                    <label for="orientation">Sexual Orientation</label>
+                        <select name="orientation" className="form-control" onChange={handleInputChange}>
+                        <option selected="selected">--------</option>
+                        <option value="1">Straight</option>
+                        <option value="2">Gay</option>
+                        <option value="3">Bisexual</option>
+                    </select>
                  </Col>
                 </Row>
                 <br></br>
                 <Row>
                 <Col>
-                <Button className="btn btn-lg btn-primary btn-block" type="submit">Register</Button>
+                <Button 
+                    className="btn btn-lg btn-primary btn-block" 
+                    onClick={handleFormSubmit}>
+                        Register
+                    </Button>
                 </Col>
                 </Row>
 
             </form>
         </div>
-    )}
+        )
 }
 
 

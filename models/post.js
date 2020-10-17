@@ -1,12 +1,12 @@
 module.exports = function (sequelize, DataTypes) {
-    const Date = sequelize.define("Date", {
+    const Post = sequelize.define("Post", {
         title: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         category: {
             type: DataTypes.STRING,
-            defaultValue: "Date"
+            defaultValue: "Post"
         },
         location: {
             type: DataTypes.STRING,
@@ -22,13 +22,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Date.associate = function (models) {
-        Date.belongsTo(models.User, {
+    Post.associate = function (models) {
+        Post.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
     };
 
-    return Date;
+    return Post;
 };
