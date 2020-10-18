@@ -1,42 +1,46 @@
 import React, { Component, useState, useEffect } from "react";
 import { Row, Col, Button, } from 'react-bootstrap';
-// import API from '../../utils/API';
-import API from '../../utils/API.js';
+import API from '../../utils/API';
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
+
 
 function Signup() {
-
-
-
     const [users, setUsers] = useState([])
+    const [phoneValue, setPhone] = useState([])
     const [formObject, setFormObject] = useState([])
-
 
     // useEffect(() => {
     //     loadPage()
     // }, [])
 
-    function loadPage() {
+    function RegisterUser() {
         console.log("Creating User")
         API.createUser({
-            email: formObject.title,
+            email: formObject.email,
             first_name: formObject.first_name,
             last_name: formObject.last_name,
             age: formObject.age,
             password: formObject.password,
             orientation: formObject.orientation,
-            gender: formObject.gender
+            gender: formObject.gender,
+            phone: formObject.phone
         })
         .then(res => setUsers(res.data))
         .catch(err => console.log(err))
         
     }
 
+    function handlePhoneInputChange(event) {
+        console.log(event)
+        const { name, value } = event;
+        setPhone({...phoneValue, [name]: value})
+    };
 
-
- function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({...formObject, [name]: value})
-  };
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setFormObject({...formObject, [name]: value})
+    };
  
 function handleFormSubmit(event) {
     event.preventDefault();
@@ -47,8 +51,9 @@ function handleFormSubmit(event) {
         formObject.age &&
         formObject.password &&
         formObject.orientation &&
-        formObject.gender) {
-            loadPage()
+        formObject.gender &&
+        formObject.phone) {
+            RegisterUser()
         }
   };
 
@@ -57,7 +62,7 @@ function handleFormSubmit(event) {
         <div>
             <form className="form-group mt-5 mb5" >
                 <Row className="justify-content-md-center">
-                    <Col md={5}>
+                    <Col md={4}>
                         <h3>Email Address</h3>
                         <input 
                             className="form-control mb-5" 
@@ -68,7 +73,7 @@ function handleFormSubmit(event) {
                             onChange={handleInputChange}
                             />
                     </Col>
-                    <Col md={3}>
+                    <Col md={4}>
                         <h3>First Name</h3>
                         <input 
                             className="form-control mb-5" 
@@ -79,7 +84,7 @@ function handleFormSubmit(event) {
                             onChange={handleInputChange}
                         />
                     </Col>
-                    <Col md={3}>
+                    <Col md={4}>
                         <h3>Last Name</h3>
                         <input 
                             className="form-control mb-5" 
@@ -90,7 +95,21 @@ function handleFormSubmit(event) {
                             onChange={handleInputChange}
                         />
                     </Col>
-                    <Col md={1}>
+                </Row>
+                    
+
+                <Row className="justify-content-md-center">
+                    <Col md={4}>
+                        <h3>Phone Number</h3>
+                        <input
+                            className="form-control mb-5" 
+                            placeholder="Enter phone number"
+                            defaultCountry="US"
+                            name="phone"
+                            onChange={handleInputChange}/>
+                    </Col>
+                    
+                    <Col md={4}>
                         <h3>Age</h3>
                         <input className="form-control" 
                             type="number" 
@@ -101,10 +120,8 @@ function handleFormSubmit(event) {
                             onChange={handleInputChange}
                         />
                     </Col>
-                </Row>
 
-                <Row className="justify-content-md-center">
-                    <Col md={12}>
+                    <Col md={4}>
                         <h3>Password</h3>
                         <input 
                             className="form-control mb-5" 
