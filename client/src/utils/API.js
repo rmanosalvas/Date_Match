@@ -8,7 +8,10 @@ export default {
         return axios.get("/api/user" + id)
     },
     createUser: function(userData){
-        console.log("number  2")
         return axios.post("/api/user", userData)
+    },
+    userLogin: function(userData){
+        console.log("CLIENT - LOGIN")
+        return axios.get("/api/login", userData)
     }
 }

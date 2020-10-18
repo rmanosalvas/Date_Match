@@ -38,26 +38,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        // phone: {//Signup & Profile
-        //     type: Sequelize.ARRAY(Sequelize.STRING),
-        //     allowNull: false,
-        //     unique: true,
-        //     validate: {
-        //         isValidPhoneNo: function(value) {
-        //             if (!value) return value;
-        
-        //             var regexp = /^[0-9]+$/;
-        //             var values = (Array.isArray(value)) ? value : [value];
-        
-        //             values.forEach(function(val) {
-        //                 if (!regexp.test(val)) {
-        //                     throw new Error("Only NUMBERS are allowed.");
-        //                 }
-        //             });
-        //             return value;
-        //         }
-        //     }
-        // },              
+        phone: {//Signup & Profile
+            type: DataTypes.STRING,
+            unique: true,
+            allowNull: false
+        },             
         userPref1: {// Profile only
             type: DataTypes.STRING,
             allowNull: true
