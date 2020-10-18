@@ -1,7 +1,6 @@
 // Connect to the DB
 const db = require('../models');
-const passport = require("../config/passport"); // Requiring passport
-const isAuthenticated = require("../config/middleware/isAuthenticated.js");
+const notifier = require('../config/middleware/notifier');
 
 module.exports = {
     // Route for creating new user
@@ -10,10 +9,13 @@ module.exports = {
 		console.log(req)
 		db.User.create(req.body).then(function(user) {
 			res.json(user);
+			// send welcome msg to the new user
+			notifier("Welcome to Date Match " + req.body.first_name + ".", req.body.phone)
 		});
 	},
 
 	loginUser: (req, res) => {
+		passport.authenticate('local')
 		console.log("SERVER ACTION - loginUser:")
 		console.log(req)
 		

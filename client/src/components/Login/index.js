@@ -64,9 +64,9 @@ function Login() {
                             Sign In
                         </Button>
                         <Button
-                            className="btn btn-md btn-info col"
-                            onClick={handleFormSubmit}>
-                            Sign Up
+                                className="btn btn-md btn-info col"
+                                onClick={handleFormSubmit}>
+                                Sign Up
                         </Button>
                     </Row>
             </form>

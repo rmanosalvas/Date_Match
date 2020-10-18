@@ -12,6 +12,6 @@ export default {
     },
     userLogin: function(userData){
         console.log("CLIENT - LOGIN")
-        return axios.get("/api/login", userData)
+        return axios.post("/api/login", userData)
     }
 }
