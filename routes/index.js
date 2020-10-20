@@ -8,10 +8,15 @@ const passport = require("../config/passport"); // Requiring passport
 router.post('/api/login', 
   passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
+    console.log("SERVER - Logging User In")
     // res.redirect('/dashboard');
   });
 
 // recovery route
+
+// message route
+
+// date routes
 
 // API Routes
 router.use("/api", apiRoutes);

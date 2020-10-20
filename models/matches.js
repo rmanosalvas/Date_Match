@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const Match = sequelize.define("match", {
+    const Match = sequelize.define("Match", {
         user1: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -16,7 +16,6 @@ module.exports = function (sequelize, DataTypes) {
         { foreignKey: 'id', allowNull: false }
         );
     };
-
 
     return Match;
 };

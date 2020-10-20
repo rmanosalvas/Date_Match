@@ -14,15 +14,15 @@ module.exports = {
 		});
 	},
 
-	loginUser: (req, res) => {
-		passport.authenticate('local')
-		console.log("SERVER ACTION - loginUser:")
-		console.log(req)
-		
-	}
+	accountSettings: (req, res) => {
+		// change the users account settings
+	},
+	changeAvatar: (req, res) => {
+		// change the users avatar
+	},
+	changePassword: (req, res) => {
+		// change the users avatar
+	},
+
  
 }
-
-
-
-;
