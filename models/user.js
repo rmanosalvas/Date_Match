@@ -88,15 +88,16 @@ module.exports = function (sequelize, DataTypes) {
         User.hasMany(models.Post, {
             onDelete: "cascade"
         });
-        User.hasMany(models.match,{
-            onDelete: "cascade",
-            as: 'matched'
+        User.hasMany(models.Comment, {
+            onDelete: "cascade"
         });
-        User.belongsToMany(models.match, 
+        User.hasMany(models.Message, {
+            onDelete: "cascade"
+        });       
+        User.belongsToMany(models.Match, 
             {through: 'id'},
             { foreignKey: 'id', allowNull: false }
-        )
-    
+        );
     }
 
 

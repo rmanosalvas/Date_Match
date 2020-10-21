@@ -6,5 +6,7 @@ const userController = require('../../controllers/userControllers');
 router.route('/')
     .post(userController.createUser);
 
+// router.route('/recover')
+//     .put(userController.recoverAccount);
 
 module.exports = router;
