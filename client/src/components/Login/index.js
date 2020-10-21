@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Button, } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Row, Col, Button, Container } from 'react-bootstrap';
 import API from '../../utils/API';
 
 function Login() {
@@ -11,8 +12,7 @@ function Login() {
         API.userLogin({
             email: formObject.email,
             password: formObject.password
-        })
-        .then(res => setUsers(res.data))
+        }).then(res => {setUsers(res.data)})
         .catch(err => console.log(err))
     }
 
@@ -33,43 +33,53 @@ function Login() {
     return (
         <div>
             <form className="form-group mt-5 mb-5">
-                <Col>
+                <Container>
                     <Row>
-                    <h1 class="h2 mb-2 font-weight-normal">Please sign in</h1>
+                        <Col>
+                            <h1>Please sign in:</h1>
+                        </Col>
+                    </Row>
+                    <br></br>
+                    <Row>
+                        <Col>
+                            <input className="form-control mb-5"
+                            placeholder="Email address"
+                            required 
+                            name="email" 
+                            type="text" 
+                            onChange={handleInputChange}
+                            />
+                        </Col>
                     </Row>
                     <Row>
-                        <h3 class="h5 mb-5 font-weight-normal">Email Address</h3>
-                        <input className="form-control mb-5"
-                        placeholder="Email address"
-                        required 
-                        name="email" 
-                        type="text" 
-                        onChange={handleInputChange}
-                        />
+                        <Col>
+                            <input className="form-control mb-5"
+                            placeholder="Password"
+                            required 
+                            name="password" 
+                            type="password" 
+                            onChange={handleInputChange}
+                            />
+                        </Col>
                     </Row>
                     <Row>
-                        <input className="form-control mb-5"
-                        placeholder="Password"
-                        required 
-                        name="password" 
-                        type="password" 
-                        onChange={handleInputChange}
-                        />
-                    </Row>
-                </Col>
-                    <Row>
-                        <Button
-                            className="btn btn-md btn-primary col"
-                            onClick={handleFormSubmit}>
-                            Sign In
-                        </Button>
-                        <Button
-                                className="btn btn-md btn-info col"
+                        <Col>
+                            <Button
+                                className="btn btn-md btn-primary col"
                                 onClick={handleFormSubmit}>
-                                Sign Up
-                        </Button>
+                                Sign In
+                            </Button>
+                            <br></br><br></br>
+                            <Button href="/signup"
+                                    className="btn btn-md btn-info col"
+                            >
+                                {/* <Redirect to="/somewhere/else" /> */}
+                                    Sign Up
+                            </Button>
+                        </Col>
                     </Row>
-            </form>
+                </Container>
+            </form>  
         </div>
     );
 }

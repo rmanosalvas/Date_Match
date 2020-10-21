@@ -7,12 +7,8 @@ import 'react-phone-number-input/style.css'
 
 function Signup() {
     const [users, setUsers] = useState([])
-    const [phoneValue, setPhone] = useState([])
     const [formObject, setFormObject] = useState([])
 
-    // useEffect(() => {
-    //     loadPage()
-    // }, [])
 
     function RegisterUser() {
         console.log("Creating User")
@@ -30,12 +26,6 @@ function Signup() {
         .catch(err => console.log(err))
         
     }
-
-    function handlePhoneInputChange(event) {
-        console.log(event)
-        const { name, value } = event;
-        setPhone({...phoneValue, [name]: value})
-    };
 
     function handleInputChange(event) {
         const { name, value } = event.target;
