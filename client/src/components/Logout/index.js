@@ -5,8 +5,13 @@ import API from '../../utils/API';
 function Logout(){
 
     function getMeOut(){
-        localStorage.clear();
-        window.location.href="/"
+        API.logMeOut().then(()=> {
+            console.log("logging out!")
+            window.location.href = "/";
+
+            })        
+            .catch(err => console.log(err))
+
     }
 
     return(

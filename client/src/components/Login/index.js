@@ -12,7 +12,10 @@ function Login() {
         API.userLogin({
             email: formObject.email,
             password: formObject.password
-        }).then(res => {setUsers(res.data)})
+        }).then(()=> {
+            console.log("logging on")
+            window.location.href = "/dashboard";
+        })
         .catch(err => console.log(err))
     }
 

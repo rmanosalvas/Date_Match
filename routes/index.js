@@ -12,14 +12,8 @@ router.get('/', isAuthenticated, function (req, res) {
 });
 
 // LOGIN route
-router.post('/api/login', 
-  passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/login', failureFlash : true  }),
-  function(req, res) {
-    console.log(req)
-    // redirect the user to the dashboard
-    
-    console.log("****************************")
-    console.log(res)
+router.post('/api/login', passport.authenticate('local'), function(req, res) {
+     res.json(req.user);
   });
 
 // API Routes
