@@ -20,7 +20,7 @@ export default {
     recover: function(accountInfo){
         return axios.put("/api/user/recover", accountInfo)
     },
-    logout: function(){
+    logMeOut: function(){
         return axios.get("/logout")
     }
     
