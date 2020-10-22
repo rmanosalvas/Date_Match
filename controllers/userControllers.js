@@ -6,6 +6,7 @@ module.exports = {
     // Route for creating new user
     createUser: (req, res) => {
 		console.log("SERVER ACTION - createUser:")
+		console.log(req.body)
 		db.User.create(req.body).then(function(user) {
 			res.json(user);
 			// send welcome msg to the new user
