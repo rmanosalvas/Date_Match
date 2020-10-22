@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Sign_up from './pages/Sign_up';
 import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
-
+import TestingPage from './pages/TestingPage'
 
 function App() {
   return (
@@ -30,6 +30,9 @@ function App() {
           <Route exact path='/password'>
           <Password />
           </Route> 
+          <Route exact path='/testpage' >
+          <TestingPage />
+          </Route>
         </Switch>
       </div>
     </Router>
