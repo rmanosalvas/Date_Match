@@ -33,7 +33,7 @@ module.exports = {
             location: req.body.location,
             body: req.body.body,
             UserId: req.user.id
-          }).then((dbPost) => {
+        }).then((dbPost) => {
             // return the result in JSON format
             res.json(dbPost);
           }).catch((err) => {

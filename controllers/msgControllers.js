@@ -7,7 +7,8 @@ module.exports = {
     sendMsg: (req, res) => {
 		console.log("SERVER ACTION - sending msg:");
 		db.Messages.create(req.body).then(function(user) {
-			res.json(user);
+            res.json(user);
+            
 		});
 	},
 	deleteMsg: (req, res) => {

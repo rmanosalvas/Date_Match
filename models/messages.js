@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: true,
         },
     });
-
+    
     Message.associate = function (models) {
         Message.belongsTo(models.User, {
             foreignKey: {
