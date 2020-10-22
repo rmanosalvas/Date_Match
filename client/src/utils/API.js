@@ -15,6 +15,7 @@ export default {
         return axios.post("/api/login", userData)
     },
     createDate: function(dateData){
+        console.log("CLIENT - Posting Date")
         return axios.post("/api/dates", dateData)
     },
     recover: function(accountInfo){

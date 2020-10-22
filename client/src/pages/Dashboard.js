@@ -2,8 +2,8 @@ import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap'
 import Nav from '../components/Nav';
 import Footer from '../components/Footer'
-import CreateDate from '../components/CreateDate'
 import Logout from '../components/Logout'
+import CreateDate from '../components/CreateDate'
 
 
 

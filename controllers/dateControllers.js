@@ -32,8 +32,8 @@ module.exports = {
             body: req.body.body,
             UserId: req.user.id
         }).then((dbPost) => {
+          console.log("Console New Date Created!" + "This is date # " + dbPost.id)
             // return the result in JSON format
-            res.json(dbPost);
           }).catch((err) => {
             // if there are errors log them to the console
             console.log(err)
