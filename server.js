@@ -5,7 +5,7 @@ const app = express();
 const passport = require("./config/passport"); // Requiring passport
 const session = require("express-session"); // Requiring session for passport
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // passport config
 app.use(session({ secret: "partylater", resave: true, saveUninitialized: true }));

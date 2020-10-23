@@ -7,6 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Sign_up from './pages/Sign_up';
 import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
+import Matches from './pages/Matches'
+import Newpage from './pages/Newpage'
+
 
 
 function App() {
@@ -15,7 +18,7 @@ function App() {
       <div>
         {/* <Nav /> */}
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/' id='logIn'>
             <LoginPage />
           </Route> 
           <Route exact path='/signup' >
@@ -30,6 +33,9 @@ function App() {
           <Route exact path='/password'>
           <Password />
           </Route> 
+          <Route exact path='/matches' >
+          <Matches />
+          </Route>
         </Switch>
       </div>
     </Router>
