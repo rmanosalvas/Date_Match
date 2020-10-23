@@ -11,7 +11,9 @@ module.exports = {
 			res.json(user);
 			// send welcome msg to the new user
 			notifier("Welcome to Date Match " + req.body.first_name + ".", req.body.phone)
-		});
+		}).catch((err) => {
+			console.log(err)
+		});;
 	},
 	getUser: (req, res) => {
 		// get a users id
@@ -50,6 +52,12 @@ module.exports = {
 	},
 	changeAvatar: (req, res) => {
 		// change the users avatar
+	},
+	changePassword: (req, res) => {
+		// change the users avatar
+	},
+	accountSettings: (req, res) => {
+		// change the users account settings
 	},
 	changePassword: (req, res) => {
 		// change the users avatar

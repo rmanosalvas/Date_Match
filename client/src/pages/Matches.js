@@ -17,7 +17,7 @@ const  Matches = ()=> {
         API.getMatches()
             .then(res => {
                 setMatches(res.data);
-                console.log(res.data[0].user2)
+                console.log(res.data)
             })
             .catch(err => console.log(err));
     };

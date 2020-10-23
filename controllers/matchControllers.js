@@ -6,6 +6,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated.js");//Che
 
 module.exports = {
     newMatch: (req, res) => {
+      console.log("SERVER ACTION - Creating New Match")
         db.Match.create({
             user1: req.body.user1,
             user2: req.body.user2,
@@ -22,39 +23,26 @@ module.exports = {
 		
     },
     getMatches: (req, res) => {
-        // get all matches for the requesting user
-        const getMatches = db.Match.findAll({
-          where: { user1: req.user.id}
-        }).then((result) => {
-          res.json(result);
-        }).catch((err) => {
-          // if there are errors log them to the console
-          console.log(err);
-          // map the result for the user IDs matched with the current user
-          let matchedUsers = result.map(match => {
-            const usersFiltered = [];
-            usersFiltered.push(match.dataValues.user2)
-            return usersFiltered
-          });
-
-          db.User.findAll({
-            where: {id: matchedUsers}
-          }).then((allMatches) => {
-            console.log(allMatches)
-            
-            var matchData = {
-              UserData: req.user,
-              PotentialMatches: allMatches
-            }
-             res.json(matchData);
-
-          }).catch((err) => {
-            console.log(err)
-          });
-          getMatches
-
+      console.log("SERVER ACTION - Finding matches for " + req.user.first_name)
+      db.Match.findAll({
+        where: { user1: req.user.id}
+      }).then((result) => {
+        // map the result for the user IDs matched with the current user
+        let matchedUsers = result.map(match => {
+          const usersFiltered = [];
+          usersFiltered.push(match.dataValues.user2)
+          return usersFiltered
         });
-        
-        // map results in object to be returned in the res.
+        db.User.findAll({
+          where: {id: matchedUsers}
+        }).then((foundUsers) => {
+          res.json(foundUsers)
+        })
+        // res.json(result)
+      }).catch((err) => {
+        // if there are errors log them to the console
+        console.log(err)
+      });
     }
+  
 }

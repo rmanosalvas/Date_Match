@@ -20,7 +20,6 @@ router.post('/api/login', passport.authenticate('local'), function(req, res) {
   });
 
 
-
 // dashboard route 
 router.get('/dashboard', isAuthenticated, function (req, res) {
   // dashboard

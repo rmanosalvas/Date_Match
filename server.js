@@ -5,8 +5,7 @@ const app = express();
 const passport = require("./config/passport"); // Requiring passport
 const session = require("express-session"); // Requiring session for passport
 
-
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // passport config
 app.use(session({ secret: "partylater", resave: true, saveUninitialized: true }));
@@ -23,7 +22,6 @@ if(process.env.NODE_ENV === 'production'){
 
 //using the routes folder.  The is a index file the will direct routes traffic in the folder
 app.use(routes);
-
 
 //{ force: false } to not overwrite DB each app load
 //{ force: true } to overwrite DB each app load

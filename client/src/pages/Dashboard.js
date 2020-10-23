@@ -52,6 +52,7 @@ const Dashboard = () => {
                                 {dates.map(date => (
                                     <Card key={date.id}>
                                         <Card.Body>
+
                                             <Card.Title>
                                                 <h5>
                                                     {date.title}
