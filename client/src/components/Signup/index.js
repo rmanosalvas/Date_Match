@@ -7,12 +7,8 @@ import 'react-phone-number-input/style.css'
 
 function Signup() {
     const [users, setUsers] = useState([])
-    const [phoneValue, setPhone] = useState([])
     const [formObject, setFormObject] = useState([])
 
-    // useEffect(() => {
-    //     loadPage()
-    // }, [])
 
     function RegisterUser() {
         console.log("Creating User")
@@ -26,16 +22,14 @@ function Signup() {
             gender: formObject.gender,
             phone: formObject.phone
         })
-        .then(res => setUsers(res.data))
+        .then(res => {
+            console.log("User Created")
+            setUsers(res.data)
+            window.location.href = "/";
+        })
         .catch(err => console.log(err))
         
     }
-
-    function handlePhoneInputChange(event) {
-        console.log(event)
-        const { name, value } = event;
-        setPhone({...phoneValue, [name]: value})
-    };
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -153,18 +147,18 @@ function handleFormSubmit(event) {
                     <label for="gender">Select Your Pronouns</label>
                         <select className="form-control" name="gender" onChange={handleInputChange}>
                         <option selected="selected">--------</option>
-                        <option value="1">he, him, his</option>
-                        <option value="2">she, her, her</option>
-                        <option value="3">they, them, theirs</option>
+                        <option value="he, him, his">he, him, his</option>
+                        <option value="she, her, her">she, her, her</option>
+                        <option value="they, them, theirs">they, them, theirs</option>
                         </select>
                  </Col>
                  <Col md={6}>
                     <label for="orientation">Sexual Orientation</label>
                         <select name="orientation" className="form-control" onChange={handleInputChange}>
                         <option selected="selected">--------</option>
-                        <option value="1">Straight</option>
-                        <option value="2">Gay</option>
-                        <option value="3">Bisexual</option>
+                        <option value="Straight">Straight</option>
+                        <option value="Gay">Gay</option>
+                        <option value="Bisexual">Bisexual</option>
                     </select>
                  </Col>
                 </Row>

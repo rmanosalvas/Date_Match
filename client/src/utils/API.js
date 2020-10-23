@@ -13,5 +13,16 @@ export default {
     userLogin: function(userData){
         console.log("CLIENT - LOGIN")
         return axios.post("/api/login", userData)
+    },
+    createDate: function(dateData){
+        console.log("CLIENT - Posting Date")
+        return axios.post("/api/dates", dateData)
+    },
+    recover: function(accountInfo){
+        return axios.put("/api/user/recover", accountInfo)
+    },
+    logMeOut: function(){
+        return axios.get("/logout")
     }
+    
 }

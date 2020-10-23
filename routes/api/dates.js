@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../../controllers/userControllers');
+const dateControllers = require('../../controllers/dateControllers');
 
 // route for registering new user (post)
-router.route('/').post(userController.createUser);
+router.route('/').post(dateControllers.newDate);
+
 
 module.exports = router;

@@ -1,7 +1,5 @@
 // Connect to the DB
 const db = require('../models');
-const isAuthenticated = require("../config/middleware/isAuthenticated.js");
-
 
 module.exports = {
     // Route for creating new user
@@ -10,8 +8,8 @@ module.exports = {
         db.Post.findAll({
             order: ["createdAt", "DESC"],
           })
-          .then(function (dbPost) {
-            res.json(dbPost);
+          .then(function (dates) {
+            res.json(dates);
           });
     },
     getOneDate: (req, res) => {
@@ -34,12 +32,12 @@ module.exports = {
             body: req.body.body,
             UserId: req.user.id
         }).then((dbPost) => {
+          console.log("Console New Date Created!" + "This is date # " + dbPost.id)
             // return the result in JSON format
-            res.json(dbPost);
-          }).catch((err) => {
-            // if there are errors log them to the console
-            console.log(err)
-          });
+        }).catch((err) => {
+          // if there are errors log them to the console
+          console.log(err)
+        });
     },
     deleteDate: (req, res) => {
         console.log("SERVER ACTION - Deleting Date:")

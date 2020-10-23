@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 3001;
 app.use(session({ secret: "partylater", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 // Configure body parser for AJAX requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -23,7 +22,6 @@ if(process.env.NODE_ENV === 'production'){
 
 //using the routes folder.  The is a index file the will direct routes traffic in the folder
 app.use(routes);
-
 
 //{ force: false } to not overwrite DB each app load
 //{ force: true } to overwrite DB each app load

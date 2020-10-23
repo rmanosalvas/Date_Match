@@ -1,6 +1,8 @@
 // Connect to the DB
 const db = require('../models');
 const notifier = require('../config/middleware/notifier');
+const isAuthenticated = require("../config/middleware/isAuthenticated.js");//Checks that a user has been authenticated
+
 
 module.exports = {
     newMatch: (req, res) => {
