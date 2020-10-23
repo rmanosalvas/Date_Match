@@ -18,7 +18,7 @@ function App() {
       <div>
         {/* <Nav /> */}
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/' id='login'>
             <LoginPage />
           </Route> 
           <Route exact path='/signup' >
