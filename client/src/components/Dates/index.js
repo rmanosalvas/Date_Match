@@ -5,8 +5,14 @@
 import React from 'react';
 
 function Date () {
+    
     return (
+        <div>
+            <div className='card-md-10'>
 
+
+            </div>
+        </div>
     );
 }
 
