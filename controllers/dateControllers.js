@@ -6,10 +6,13 @@ module.exports = {
     getAllDates: (req, res) => {
         console.log("SERVER ACTION - All Dates:");
         db.Post.findAll({
-          })
-          .then(function (dbPost) {
-            res.json(dbPost);
-          });
+          order: [
+            ['createdAt', 'DESC']
+          ],
+        })
+        .then(function (dates) {
+          res.json(dates);
+        });
     },
     getOneDate: (req, res) => {
         console.log("SERVER ACTION - Loading date::");
@@ -36,10 +39,10 @@ module.exports = {
         }).then((dbPost) => {
           console.log("Console New Date Created!" + "This is date # " + dbPost.id)
             // return the result in JSON format
-          }).catch((err) => {
-            // if there are errors log them to the console
-            console.log(err)
-          });
+        }).catch((err) => {
+          // if there are errors log them to the console
+          console.log(err)
+        });
     },
     deleteDate: (req, res) => {
         console.log("SERVER ACTION - Deleting Date:")
