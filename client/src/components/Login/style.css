@@ -1,0 +1,13 @@
+h1, p {
+    text-align: center;
+}
+
+#loginForm {
+    justify-content: center; 
+    border-radius: 25px;
+    background-color: rgba(112, 100, 100, 0.6)
+}
+
+#aTag {
+    color: #FFF;
+  }

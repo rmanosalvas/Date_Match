@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Row, Col, Button, Container } from 'react-bootstrap';
 import API from '../../utils/API';
+import './style.css';
 
 function Login() {
     const [users, setUsers] = useState([])
@@ -36,15 +37,11 @@ function Login() {
     return (
         <div>
             <form className="form-group mt-5 mb-5">
-                <Container>
-                    <Row>
-                        <Col>
-                            <h1>Please sign in:</h1>
-                        </Col>
-                    </Row>
+                <Container id='loginForm'>
                     <br></br>
                     <Row>
                         <Col>
+                            <br></br>
                             <input className="form-control mb-5"
                             placeholder="Email address"
                             required 
@@ -79,6 +76,8 @@ function Login() {
                                 {/* <Redirect to="/somewhere/else" /> */}
                                     Sign Up
                             </Button>
+                            <br></br><br></br>
+                            <p><a href='/recoverpassword'id='aTag'>Forgot Password</a></p>
                         </Col>
                     </Row>
                 </Container>

@@ -7,6 +7,7 @@ import CreateDate from '../components/CreateDate'
 import Profile from '../components/Profile'
 import API from '../utils/API'
 import DeleteButton from '../components/DeleteButton'
+import BulkExports from 'twilio/lib/rest/preview/BulkExports';
 
 const Dashboard = () => {
 
@@ -29,12 +30,12 @@ const Dashboard = () => {
         console.log("deleting")
         API.deleteDate(id)
         window.location.href = "/dashboard"
-        
-
     }
+
 
     return (
         <div>
+            <div>
             <Container>
                 <Row>
                     {/* <Nav /> */}
@@ -73,6 +74,7 @@ const Dashboard = () => {
 
                 <Footer />
             </Container>
+            </div>
         </div>
     )
 };
