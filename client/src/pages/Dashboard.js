@@ -4,7 +4,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer'
 import Logout from '../components/Logout'
 import CreateDate from '../components/CreateDate'
-
+import Profile from '../components/Profile'
 
 
 const Dashboard = () => {
@@ -16,6 +16,7 @@ const Dashboard = () => {
                 </Row>
                 <Row>
                 <CreateDate />
+                <Profile />
                 </Row>
                 <Logout />
                 <Footer />
