@@ -4,8 +4,9 @@ const router = express.Router();
 const apiRoutes = require("./api");
 const passport = require("../config/passport"); // Requiring passport
 const isAuthenticated = require("../config/middleware/isAuthenticated.js");//Checks that a user has been authenticated
-const dateControllers = require('../controllers/dateControllers')
 
+// API Routes
+router.use("/api", apiRoutes );
 
 // dashboard route 
 router.get('/', isAuthenticated, function (req, res) {
@@ -18,8 +19,7 @@ router.post('/api/login', passport.authenticate('local'), function(req, res) {
      res.json(req.user);
   });
 
-// API Routes
-router.use("/api", apiRoutes );
+
 
 // dashboard route 
 router.get('/dashboard', isAuthenticated, function (req, res) {

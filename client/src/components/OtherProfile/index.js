@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Card, Modal } from 'react-bootstrap'
 
 
 
-function Profile() {
+function OtherProfile() {
 
 
     return (
@@ -17,9 +17,9 @@ function Profile() {
                     <h1>Name Goes Here</h1>
                 </Row>
                 <hr></hr>
-                <Row>
+                <Row >
                     <Col>
-                        <h3>
+                        <h3 >
                             Age:
                         </h3>
                     </Col>
@@ -29,45 +29,22 @@ function Profile() {
                         </h3>
                     </Col>
                     <Col>
-                        <h3>
-                            Identifies as:
-                        </h3>
+                    <h3 id="location">Location Here</h3>
+
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
-                        <p>Where are you from?</p>
-                        <input
-                            type="text"
-                            className="form-control">
-                        </input>
-                    </Col>
-                    <Col>
-                        <p>Where are you from?</p>
-                        <Button type="submit">Use My Location</Button>
-                    </Col>
+
                 </Row>
                 <hr></hr>
-                <Row>
-                    <Col>
-                        <p>
-                            Hello, my name is ____ ___ and let me tell you a bit about myself.
-                        </p>
+                <Row >
+                    <Col >
+                    <p >Hello, my name is Firstname Lastname and let me tell you a bit about myself.
+                            </p>
                         <br></br>
-                        <p>
-                            I like to 
-                            <input id="aboutMe1" type="text" value="" required></input> 
-                            and I am looking for someone who wants to 
-                            <input id="userPref1" type="text" value="" required></input> 
-                            . I'm always  
-                                <input id="aboutMe2" type="text" value="" required></input>
-                                ,so lets 
-                                <input id="userPref2" type="text" value="" required></input>
-                                . Know that 
-                                <input id="aboutMe3" type="text" value="" required></input> 
-                                is really important to me so I hope you
-                                 <input id="userPref3" type="text" value=""></input>.
-                        </p>
+                        <p>I like to aboutme1 and I am looking for someone who wants to userpref1. I'm always aboutme2, so lets  userpref2 .  Lastly, Know that aboutme3 is really important to me so I hope you userpref3.
+                            </p>
+                            <p>If you think this could workout then show interest in one of my <a href="/posts/{{Profile.dataValues.id}}">posts!</a></p>
                     </Col>
                 </Row>
             </div>
@@ -77,4 +54,4 @@ function Profile() {
     )
 }
 
-export default Profile
+export default OtherProfile

@@ -13,6 +13,38 @@ module.exports = {
 			notifier("Welcome to Date Match " + req.body.first_name + ".", req.body.phone)
 		});
 	},
+	getUser: (req, res) => {
+		// get a users id
+		console.log("SERVER ACTION - getting some users info:")
+		console.log(req.body)
+		db.User.findOne({
+			where: {
+			  id: req.params.id
+			}
+		}).then(function(userFound) {
+			// Steps to take after the user
+			console.log(userFound)
+			res.json(user);
+		  }).catch((err) => {
+			  console.log(err)
+		  });
+	},
+	getUsers:  (req, res) => {
+		// get this users id
+		console.log("SERVER ACTION - getting current user's info:")
+		console.log(req.body)
+		db.User.findOne({
+			where: {
+			  id: req.user.id
+			}
+		}).then(function(userFound) {
+			// Steps to take after the user
+			console.log(userFound)
+			res.json(user);
+		  }).catch((err) => {
+			  console.log(err)
+		  });
+	},	
 	accountSettings: (req, res) => {
 		// change the users account settings
 	},

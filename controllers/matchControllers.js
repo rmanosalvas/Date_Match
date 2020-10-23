@@ -23,6 +23,38 @@ module.exports = {
     },
     getMatches: (req, res) => {
         // get all matches for the requesting user
+        const getMatches = db.Match.findAll({
+          where: { user1: req.user.id}
+        }).then((result) => {
+          res.json(result);
+        }).catch((err) => {
+          // if there are errors log them to the console
+          console.log(err);
+          // map the result for the user IDs matched with the current user
+          let matchedUsers = result.map(match => {
+            const usersFiltered = [];
+            usersFiltered.push(match.dataValues.user2)
+            return usersFiltered
+          });
+
+          db.User.findAll({
+            where: {id: matchedUsers}
+          }).then((allMatches) => {
+            console.log(allMatches)
+            
+            var matchData = {
+              UserData: req.user,
+              PotentialMatches: allMatches
+            }
+             res.json(matchData);
+
+          }).catch((err) => {
+            console.log(err)
+          });
+          getMatches
+
+        });
+        
         // map results in object to be returned in the res.
     }
 }

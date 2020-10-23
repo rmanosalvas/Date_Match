@@ -27,20 +27,21 @@ function CreateDate() {
             location: formObject.location,
             body: formObject.body,
         })
-            .then(res => setDate(res.data))
-            .catch(err => console.log(err))
-
+        
+        window.location.href = "/dashboard"
+        
     }
 
     function handleFormSubmit(event) {
         event.preventDefault();
-
-        if (
-            formObject.category &&
+        console.log(formObject.category)
+        if (formObject.category &&
             formObject.title &&
             formObject.location &&
-            formObject.body) {
+            formObject.body) 
+            {
             CreateNewDate()
+
         }
     };
     return (
