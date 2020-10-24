@@ -23,8 +23,12 @@ export default {
     getOneUser: function(id) {
         return axios.get("/api/user/" + id)
     },
-    getProfileInfo: function(id) {
+    getProfileInfo: function() {
         return axios.get("/api/profile")
+    },
+    updateProfileInfo: function(form) {
+        console.log("Client - updating user")
+        return axios.put("/api/user/" + form.id, form)
     },
     createUser: function(){
         return axios.post("/api/user")

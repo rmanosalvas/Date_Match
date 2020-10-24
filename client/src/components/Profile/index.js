@@ -10,8 +10,8 @@ function Profile() {
 
     return (
         <Container >
-            <Form >
 
+            <Form >
                 <Row className="justify-content-md-center">
                     <h1>Name Goes Here</h1>
                 </Row>

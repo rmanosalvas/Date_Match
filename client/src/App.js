@@ -11,6 +11,7 @@ import Newpage from './pages/Newpage'
 import Nav from './components/Nav'
 import Community from './pages/Community'
 import Profile from './pages/Profile'
+import Authentication from './components/Authentication'
 import './App.css';
 
 function App() {

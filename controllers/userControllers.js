@@ -87,8 +87,24 @@ module.exports = {
 			});
 
 	},
-	accountSettings: (req, res) => {
-		// change the users account settings
+	updateProfile: (req, res) => {
+		console.log("user controller HIT!!!!!!!!!!!!!!!!!!!!")
+		// change the users profile settings
+		console.log(req)
+		db.User.update(
+			{
+				gender: req.body.gender,
+				aboutMe1: req.body.aboutMe1,
+				aboutMe2: req.body.aboutMe2,
+				aboutMe3: req.body.aboutMe3,
+				userPref1: req.body.userPref1,
+				userPref2: req.body.userPref2,
+				userPref3: req.body.userPref3,
+			},{ where : { id: req.body.id}},
+		  ).then(function (result) {
+			  console.log(result)
+			res.json(result);
+		})
 	},
 	changeAvatar: (req, res) => {
 		// change the users avatar

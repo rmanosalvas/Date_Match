@@ -68,6 +68,11 @@ router.get("/api/user/:id", (req, res) => {
   userController.getOneUser(req, res);
 });
 
+router.put('/api/user/:id', (req, res) => {
+  console.log("SERVER SIDE - updating a user profile")
+  userController.updateProfile(req, res)
+});
+
 
 
 
