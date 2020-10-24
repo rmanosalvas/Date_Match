@@ -34,7 +34,6 @@ module.exports = {
 	getUsers:  (req, res) => {
 		// get this users id
 		console.log("SERVER ACTION - getting current user's info:")
-		console.log(req.body)
 		db.User.findOne({
 			where: {
 			  id: req.user.id
@@ -46,7 +45,40 @@ module.exports = {
 		  }).catch((err) => {
 			  console.log(err)
 		  });
-	},	
+	},
+	getUserCommunity: (req, res) => {
+		let genders = []
+		if (req.user.orientation == "Straight" && req.user.gender !== "Other") {
+			genders.push("Woman")
+			console.log("Finding  " + genders +"s for a " + req.user.orientation + " " + req.user.gender)
+		} else if (req.user.orientation == "Gay" && req.user.gender == "Woman") {
+			genders.push("Woman")
+			console.log("Finding  " + genders +"s for a " + req.user.orientation + " " + req.user.gender)
+		} else if (req.user.orientation == "Gay" && req.user.gender == "Man") {
+			genders.push("Man")
+			console.log("Finding  " + genders +"s for a " + req.user.orientation + " " + req.user.gender)
+		} else if (req.user.orientation == "Straight" && req.user.gender == "Other") {
+			genders.push("Other")
+			genders.push("Man")
+			genders.push("Woman")
+			console.log("Finding  " + genders +"s for a " + req.user.orientation + " " + req.user.gender)
+		} else if (req.user.orientation == "Bisexual" && req.user.gender !== "Other") {
+			genders.push("Man")
+			genders.push("Woman")
+			console.log("Finding  " + genders +"s for a " + req.user.orientation + " " + req.user.gender)
+		}
+			db.User.findAll({
+				where: { gender: genders},
+				order: [
+				['createdAt', 'DESC']
+				],
+			}).then(function(result) {
+				res.json(result)
+			}).catch((err) => {
+				console.log(err)
+			});
+
+	},
 	accountSettings: (req, res) => {
 		// change the users account settings
 	},

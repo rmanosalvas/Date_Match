@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardDeck, Container } from 'react-bootstrap';
-import API from '../utils/API'
-import Matches from '../components/Matches'
+import Community from '../pages/Community'
 
 const Newpage = () => {
 
@@ -9,7 +8,7 @@ const Newpage = () => {
     return(
 
         <Container>
-            <Matches />
+            <Community />
         </Container>
     )
 

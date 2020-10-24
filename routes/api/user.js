@@ -9,7 +9,7 @@ router.route('/').post(userController.createUser);
 router.route('/:id').get(userController.getUser);
 
 //route to get current user info    
-router.route('s/').get(userController.getUsers);
+// router.route('community').get(userController.getAllUsers);
 
 // router.route('/recover')
 //     .put(userController.recoverAccount);

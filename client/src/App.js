@@ -9,14 +9,15 @@ import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
 import Matches from './pages/Matches'
 import Newpage from './pages/Newpage'
-
+import Nava from './components/Nav'
+import Community from './pages/Community'
 
 
 function App() {
   return (
     <Router>
       <div>
-        {/* <Nav /> */}
+        {/* <Nava /> */}
         <Switch>
           <Route exact path='/' id='logIn'>
             <LoginPage />
@@ -35,6 +36,10 @@ function App() {
           </Route> 
           <Route exact path='/matches' >
           <Matches />
+          </Route>
+          <Route exact path='/community'>
+            <Nava />
+          <Community />
           </Route>
         </Switch>
       </div>
