@@ -47,7 +47,7 @@ function CreateDate() {
     return (
         <div>
         <a variant="primary" onClick={handleShow}>
-            Create a New Date
+            New Date
         </a>
         <Container >
             <Modal show={show} onHide={handleClose} >
@@ -99,7 +99,6 @@ function CreateDate() {
                                     as="textarea"
                                     name="body"
                                     onChange={handleInputChange}>
-
                                 </Form.Control>
                             </Form.Group>
                         </Row>
