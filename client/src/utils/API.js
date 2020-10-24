@@ -9,20 +9,26 @@ export default {
     logMeOut: function(){
         return axios.get("/logout")
     },
+    isLoggedIn:function(){
+        console.log("LOG IN?")
+        return axios.get("/dashboard")
+    },
     getAllUsers: function() {
         console.log("Client - AllUsers")
-        return axios.get("/api/community")
+        return axios.get("/api/allusers")
     },
-    getUsers: function() {
-        return axios.get("/api/user")
+    getRandomUsers: function(){
+        return axios.get("https://randomuser.me/api/?results=50&nat=us")
     },
-    getUser: function(id) {
+    getOneUser: function(id) {
         return axios.get("/api/user/" + id)
     },
-    createUser: function(userData){
-        return axios.post("/api/user", userData)
+    getProfileInfo: function(id) {
+        return axios.get("/api/profile")
     },
-
+    createUser: function(){
+        return axios.post("/api/user")
+    },
     // DATE REQUESTS
     getDates: function(){
         console.log("CLIENT - getting dates")

@@ -15,7 +15,7 @@ function Logout(){
     }
 
     return(
-        <Button onClick={getMeOut}>Logout</Button>
+        <a onClick={getMeOut}>Logout</a>
     )
 }
 

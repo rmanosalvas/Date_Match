@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardDeck } from 'react-bootstrap';
-import API from '../utils/API'
+import { Card, CardDeck, Carousel, Jumbotron} from 'react-bootstrap';
+import API from '../utils/API';
+// import Slider from './Slider';
+import "./style.css"
+
 
 function Community () {
 
@@ -25,17 +28,26 @@ function Community () {
 
 
     return (
-        <div>
+        <div className="carousel">
             {users.length ? (
-                <CardDeck>
+                <Carousel controls="false" slide="true" touch="true" indicators="false" pause="hover" keyboard="true" wrap="false">
                     {users.map(user => (
-                        <Card style={{ width: '18rem' }} key={user.id}>
-                            <Card.Img variant="top" src={user.avatar} rounded />
-                        </Card>
+                    <Carousel.Item interval={50}>
+                            <img
+                            width={400}
+                            height={200}
+                            className="d-block w-100"
+                            src={user.avatar}
+                            alt="First slide"
+                          />
+                        <Carousel.Caption>
+                        <h3>{user.first_name}</h3>
+                        </Carousel.Caption>
+                    </Carousel.Item>
                     ))}
-                </CardDeck>
+                </Carousel>
             ) : (
-                    <h3>No users yet James!</h3>
+                    <h3>You must be logged in to see users.</h3>
                 )}
         </div>
     )

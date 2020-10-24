@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardDeck } from 'react-bootstrap';
+import { Card, Media } from 'react-bootstrap';
 import API from '../utils/API'
 
 const  Matches = ()=> {
@@ -26,16 +26,23 @@ const  Matches = ()=> {
     return (
         <div>
             {matches.length ? (
-                <CardDeck>
+                <ul className="list-unstyled">
                     {matches.map(match => (
-                        <Card style={{ width: '18rem' }} key={match.id}>
-                            <Card.Img variant="top" src={match.avatar} />
-                            <Card.Body>
-                                <Card.Title>{match.first_name} {match.last_name}</Card.Title>
-                            </Card.Body>
-                        </Card>
+                        <Media as="li" key={match.id}>
+                        <img
+                            width={75}
+                            height={75}
+                            className="align-self-center mr-3"
+                            src={match.avatar}
+                            alt="Generic placeholder"
+                        />
+                        <Media.Body>
+                            <h5>{match.first_name} {match.last_name} </h5>
+                            <p>Likes to {match.userPref1}</p>
+                        </Media.Body>
+                        </Media>
                     ))}
-                </CardDeck>
+                </ul>
             ) : (
                     <h3>No matches yet!</h3>
                 )}

@@ -4,6 +4,6 @@ const userController = require('../../controllers/userControllers');
 
 // get all users in community
 
-router.route('/').get(userController.getUserCommunity);
+// router.route('/').get(userController.getUserCommunity);
 
 module.exports = router;
