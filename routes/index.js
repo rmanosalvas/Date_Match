@@ -4,6 +4,7 @@ const router = express.Router();
 const apiRoutes = require("./api");
 const passport = require("../config/passport"); // Requiring passport
 const isAuthenticated = require("../config/middleware/isAuthenticated.js");//Checks that a user has been authenticated
+const userController = require('../controllers/userControllers');
 
 // API Routes
 router.use("/api", apiRoutes );
@@ -33,6 +34,17 @@ router.get("/logout", function (req, res) {
 
   res.redirect("/");
 });
+
+router.get("/api/community", (req, res) => {
+  console.log(req)
+  userController.getUserCommunity(req, res);
+});
+
+
+
+
+
+
 
 
 // router.post('/api/dates', (req, res )=> {

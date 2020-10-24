@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { Component, useState, useEffect } from "react";
+import { Container, Row, Col, Button, Card, Nav, Navbar } from 'react-bootstrap';
+import "./style.css"
+import API from '../../utils/API';
 
-function Nav(){
+
+
+function Nava(){
+
+
+    function getMeOut(){
+        API.logMeOut().then(()=> {
+            console.log("logging out!")
+            window.location.href = "/";
+            })        
+            .catch(err => console.log(err))
+    }
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a className="navbar-brand" href="/dashboard">Dashboard</a>
-        <a className="navbar-brand" href="/NEWDATE">Create New Date</a>
-        <a className="navbar-brand" href="/YOURDATES">Your Dates</a>
-        <a className="navbar-brand" href="/YOURMATCHES">Your Matches</a>
-        <a className="navbar-brand" href="/YOURCOMMUNITY">Your Community</a>
-        <a className="navbar-brand" href="/HEROKUSTYFF">HEROKUSTUFF</a>
-        </nav>
+      <Navbar bg="light" expand="lg" sticky="top">
+        <Navbar.Brand href="dashboard">DateMatch</Navbar.Brand>
+        <Nav className="">
+        <Nav.Link href="#dashboard">Dashboard</Nav.Link>
+        <Nav.Link href="#matches">Matches</Nav.Link>
+        <Nav.Link onSelect={() => API.logMeOut().then(() => window.location.href ="/")}>Logout</Nav.Link>
+    </Nav>
+      </Navbar>
+
     );
 
 
 }
 
-export default Nav;
+export default Nava;

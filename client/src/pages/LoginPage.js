@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     return (
         <div id='logIn'>
-            <Jumbotron >
+            <Jumbotron style={divStyle}>
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
                         <Login />

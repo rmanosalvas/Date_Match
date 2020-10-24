@@ -147,9 +147,9 @@ function handleFormSubmit(event) {
                     <label for="gender">Select Your Pronouns</label>
                         <select className="form-control" name="gender" onChange={handleInputChange}>
                         <option selected="selected">--------</option>
-                        <option value="he, him, his">he, him, his</option>
-                        <option value="she, her, her">she, her, her</option>
-                        <option value="they, them, theirs">they, them, theirs</option>
+                        <option value="Man">he, him, his</option>
+                        <option value="Woman">she, her, her</option>
+                        <option value="Other">they, them, theirs</option>
                         </select>
                  </Col>
                  <Col md={6}>

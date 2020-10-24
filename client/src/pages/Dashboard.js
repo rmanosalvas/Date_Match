@@ -10,7 +10,6 @@ import DeleteButton from '../components/DeleteButton'
 import BulkExports from 'twilio/lib/rest/preview/BulkExports';
 
 const Dashboard = () => {
-
     const [dates, setDates] = useState([])
 
     useEffect(() => {

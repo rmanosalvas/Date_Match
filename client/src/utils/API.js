@@ -9,7 +9,10 @@ export default {
     logMeOut: function(){
         return axios.get("/logout")
     },
-
+    getAllUsers: function() {
+        console.log("Client - AllUsers")
+        return axios.get("/api/community")
+    },
     getUsers: function() {
         return axios.get("/api/user")
     },
