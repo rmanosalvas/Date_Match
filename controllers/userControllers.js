@@ -15,23 +15,22 @@ module.exports = {
 			console.log(err)
 		});;
 	},
-	getUser: (req, res) => {
+	getOneUser: (req, res) => {
 		// get a users id
-		console.log("SERVER ACTION - getting some users info:")
-		console.log(req.body)
+		console.log("SERVER ACTION - getting some users info by ID")
 		db.User.findOne({
 			where: {
 			  id: req.params.id
 			}
 		}).then(function(userFound) {
 			// Steps to take after the user
-			console.log(userFound)
+			// console.log(userFound)
 			res.json(user);
 		  }).catch((err) => {
 			  console.log(err)
 		  });
 	},
-	getUsers:  (req, res) => {
+	getUserProfile:  (req, res) => {
 		// get this users id
 		console.log("SERVER ACTION - getting current user's info:")
 		db.User.findOne({
@@ -39,9 +38,8 @@ module.exports = {
 			  id: req.user.id
 			}
 		}).then(function(userFound) {
-			// Steps to take after the user
-			console.log(userFound)
-			res.json(user);
+			// Steps to take after the user is found
+			res.json(userFound);
 		  }).catch((err) => {
 			  console.log(err)
 		  });
@@ -72,6 +70,16 @@ module.exports = {
 				order: [
 				['createdAt', 'DESC']
 				],
+			}).then(function(result) {
+				res.json(result)
+			}).catch((err) => {
+				console.log(err)
+			});
+
+	},
+	getAllUsers: (req, res) => {
+		console.log("Getting all users from the DB")
+			db.User.findAll({
 			}).then(function(result) {
 				res.json(result)
 			}).catch((err) => {

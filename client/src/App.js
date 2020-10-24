@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './App.css';
 import LoginPage from './pages/LoginPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Nav from './components/Nav'
@@ -9,15 +8,15 @@ import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
 import Matches from './pages/Matches'
 import Newpage from './pages/Newpage'
-import Nava from './components/Nav'
+import Nav from './components/Nav'
 import Community from './pages/Community'
-
+import Profile from './pages/Profile'
+import './App.css';
 
 function App() {
   return (
     <Router>
       <div>
-        {/* <Nava /> */}
         <Switch>
           <Route exact path='/' id='logIn'>
             <LoginPage />
@@ -25,21 +24,24 @@ function App() {
           <Route exact path='/signup' >
           <Sign_up />
           </Route>
-          <Route exact path='/dashboard' >
+          <Route exact path='/dashboard' component={Community}>
+          <Nav />
           <Dashboard />
           </Route>
-          {/* <Route exact path='/newpost' component={Newpost} /> */}
-          {/* <Route exact path='/matches' component={Matches} /> */}
-          {/* <Route exact path='/community' component={Community} /> */}
           <Route exact path='/password'>
           <Password />
           </Route> 
           <Route exact path='/matches' >
+          <Nav />
           <Matches />
           </Route>
           <Route exact path='/community'>
-            <Nava />
+            <Nav />
           <Community />
+          </Route>
+          <Route exact path='/profile' >
+          <Nav />
+          <Profile />
           </Route>
         </Switch>
       </div>

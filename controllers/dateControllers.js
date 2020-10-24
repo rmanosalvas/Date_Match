@@ -9,6 +9,11 @@ module.exports = {
           order: [
             ['createdAt', 'DESC']
           ],
+          // include: [{
+          //   model: User,
+          //   as: 'UserFound',
+          //   where: { UserId: db.User.id } //
+          // }]
         })
         .then(function (dates) {
           res.json(dates);
