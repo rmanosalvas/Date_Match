@@ -5,7 +5,7 @@ import API from '../utils/API'
 const  Matches = ()=> {
 
     // Setting initial state
-    const [matches, setMatches] = useState([]);
+    const [matches, setMatches] = useState({});
 
     // Load all matches and store them with setMatches
     useEffect(() => {
