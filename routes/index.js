@@ -6,6 +6,8 @@ const passport = require("../config/passport"); // Requiring passport
 const isAuthenticated = require("../config/middleware/isAuthenticated.js");//Checks that a user has been authenticated
 const userController = require('../controllers/userControllers');
 const dateControllers = require('../controllers/dateControllers');
+const matchControllers = require('../controllers/matchControllers');
+const msgControllers = require('../controllers/msgControllers');
 
 // API Routes
 router.use("/api", apiRoutes );
@@ -71,9 +73,17 @@ router.get("/api/user/:id", (req, res) => {
 });
 
 router.put('/api/user/:id', (req, res) => {
-  console.log("SERVER SIDE - updating a user profile")
-  userController.updateProfile(req, res)
+  
+  console.log("Getting messages for match")
+  msgControllers.getMsgs(req, res)
 });
+
+
+router.get("/api/messages/match/:id", (req, res) => {
+  console.log("SERVER SIDE - loading profile of one user")
+  msgControllers.getMsgs(req, res);
+});
+
 
 
 
