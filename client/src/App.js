@@ -32,8 +32,8 @@ function App() {
           </Route>
           <Route exact path='/dashboard'>
           <Authentication />
-          <Nav />
-          <Dashboard />
+          <Dashboard />          
+          {/* <Nav /> */}
           </Route> 
           <Route exact path='/matches' >
           <Authentication />
