@@ -63,11 +63,6 @@ const Dashboard = () => {
         <div>
             <div>
                 <Container>
-                    <Row>
-                    </Row>
-                    <Row>
-                        <CreateDate />
-                    </Row>
                     <Row className="communityRow">
                         <Community />
                     </Row>
