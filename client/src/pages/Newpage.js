@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardDeck, Container } from 'react-bootstrap';
-import OtherProfileMod from '../components/OtherProfileMod'
+import Message from '../components/Message'
 
 const Newpage = () => {
 
@@ -8,7 +8,7 @@ const Newpage = () => {
     return(
 
         <Container>
-            <OtherProfileMod />
+            <Message />
         </Container>
     )
 
