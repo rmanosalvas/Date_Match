@@ -14,13 +14,11 @@ function OtherProfileMod({ id }) {
     const handleClose = () => setShow(false);
     // const handleShow = () => setShow(true);
 
-
     // useEffect(() => {
     //     console.log("loading profile")
     //     loadProfile()
 
     // }, [])
-
     const handleShow = () => {
         API.getOneUser(id).then((res) => {
             setProfile(res.data)
@@ -39,7 +37,6 @@ function OtherProfileMod({ id }) {
     //         })
     //         .catch(err => console.log(err))
     // }
-
 
 
     return (

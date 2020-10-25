@@ -51,7 +51,7 @@ export default {
     // Matches
     newMatch: function(matchData){
         console.log("CLIENT - creating new match")
-        return axios.get("/api/match", matchData)
+        return axios.post("/api/match", matchData)
     },
     getMatches: function(){
         console.log("CLIENT - getting matches")

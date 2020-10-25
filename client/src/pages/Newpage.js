@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardDeck, Container } from 'react-bootstrap';
-import Message from '../components/Message'
+import Footer from '../components/Footer'
+import './style.css';
 
 const Newpage = () => {
 
@@ -8,7 +9,7 @@ const Newpage = () => {
     return(
 
         <Container>
-            <Message />
+            <Footer />
         </Container>
     )
 
