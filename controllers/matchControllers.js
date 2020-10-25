@@ -44,7 +44,7 @@ module.exports = {
           
         }).then((foundUsers) => {
           matchPackage.usersFound.users.push(foundUsers)
-          res.json(matchPackage)
+          res.json(result)
         })
         // res.json(result)
       }).catch((err) => {
