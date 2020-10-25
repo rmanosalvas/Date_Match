@@ -21,6 +21,7 @@ export default {
         return axios.get("https://randomuser.me/api/?results=50&nat=us")
     },
     getOneUser: function(id) {
+        console.log("CLIENT API")
         return axios.get("/api/user/" + id)
     },
     getProfileInfo: function() {

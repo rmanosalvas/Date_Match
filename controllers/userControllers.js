@@ -25,7 +25,7 @@ module.exports = {
 		}).then(function(userFound) {
 			// Steps to take after the user
 			// console.log(userFound)
-			res.json(user);
+			res.json(userFound);
 		  }).catch((err) => {
 			  console.log(err)
 		  });
