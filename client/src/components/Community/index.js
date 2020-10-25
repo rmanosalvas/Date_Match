@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardDeck } from 'react-bootstrap';
 import API from '../../utils/API'
 
+
 function Community () {
 
     // Setting initial state

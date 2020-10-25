@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container, Card, Jumbotron, Media } from 'react-bootstrap'
+import { Row, Col, Container, Card, Accordion, Media } from 'react-bootstrap'
 import Nav from '../components/Nav';
 import Footer from '../components/Footer'
 import Logout from '../components/Logout'
@@ -9,10 +9,9 @@ import API from '../utils/API'
 import DeleteButton from '../components/DeleteButton'
 import BulkExports from 'twilio/lib/rest/preview/BulkExports';
 import Community from './Community';
-import './style.css';
 import OtherProfileMod from "../components/OtherProfileMod"
 import UserProfileList from "../components/UserProfileList"
-
+import './style.css';
 
 const Dashboard = () => {
     const [userInfo, setUserInfo] = useState([])
@@ -64,10 +63,11 @@ const Dashboard = () => {
             <div>
                 <Container>
                     <Row className="communityRow">
+                    <h2>User Community</h2>
                         <Community />
                     </Row>
                     <Row>
-                        <Col>
+                    <Accordion defaultActiveKey="0">
                             <h2>Posted Dates</h2>
                             {dates.length ? (
                                 <div>
@@ -76,7 +76,7 @@ const Dashboard = () => {
                             ) : (
                                     <h3>No Results to Display </h3>
                                 )}
-                        </Col>
+                        </Accordion>
                     </Row>
 
                     <Footer />

@@ -25,14 +25,14 @@ module.exports = {
     getMatches: (req, res) => {
       // matches
       let matchPackage = {
-          foundMatches: [],
-          usersFound: []
+          foundMatches: {match: []},
+          usersFound: {users: []}
       }
       console.log("SERVER ACTION - Finding matches for " + req.user.first_name)
       db.Match.findAll({
         where: { user1: req.user.id}
       }).then((result) => {
-        matchPackage.foundMatches.push(result)
+        matchPackage.foundMatches.match.push(result)
         // map the result for the user IDs matched with the current user
         let matchedUsers = result.map(match => {
           const usersFiltered = [];
@@ -43,7 +43,7 @@ module.exports = {
           where: {id: matchedUsers}
           
         }).then((foundUsers) => {
-          matchPackage.usersFound.push(foundUsers)
+          matchPackage.usersFound.users.push(foundUsers)
           res.json(matchPackage)
         })
         // res.json(result)
