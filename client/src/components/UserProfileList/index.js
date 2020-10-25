@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container, Card, Jumbotron, Media } from 'react-bootstrap'
+import { Row, Col, Card, NavLink, Accordion, Button} from 'react-bootstrap'
 import OtherProfileMod from "../OtherProfileMod"
 import DeleteButton from '../DeleteButton'
 import API from '../../utils/API'
@@ -16,25 +16,36 @@ function UserProfileList({ data }) {
     return (
         
             data.map(date => (
-
-                <ul className="list-unstyled">
-                    <Media as="li" key={date.id}>
-                        {/* <img
-                    width={64}
-                    height={64}
-                    className="mr-3"
-                    src={userInfo[{date,UserId}].avatar} 
-                    alt="Generic placeholder"
-                /> */}
-                        <Media.Body>
-                            <h5>{date.title}</h5>
-                            <OtherProfileMod id={date.UserId} />
-                            <p>{date.body}  </p>
-                        </Media.Body>
-                        <DeleteButton onClick={() => deleteDates(date.id)} />
-                    </Media>
-                    <br></br>
-                </ul>
+                <Col xs={12}>
+                    <Card>
+                    <Card.Header>
+                        <Row>
+                        <Col xs={9}><h3>{date.title}</h3></Col>
+                        <Col xs={3}><DeleteButton onClick={() => deleteDates(date.id)} /></Col>
+                        </Row>
+                    </Card.Header>
+                    <Card.Body>
+                    <Card.Subtitle className="mb-2 text-muted">Category: {date.category}</Card.Subtitle>
+                        <hr></hr>
+                        {date.body}
+                    </Card.Body>
+                    <Card.Footer className="text-muted">
+                        <Row sm={8}>
+                        <Col xs={6}>
+                        <Accordion.Toggle as={Button} eventKey={date.id}>
+                        Comment
+                        </Accordion.Toggle>   
+                        </Col>
+                        <Col xs={6}><OtherProfileMod as={Button} id={date.UserId} /></Col>
+                        </Row>
+                        <Accordion.Collapse eventKey={date.id}>
+                    <Card.Body>
+                        {date.body}
+                    </Card.Body>
+                    </Accordion.Collapse>
+                    </Card.Footer>
+                    </Card>
+                </Col>
             ))
         
     )

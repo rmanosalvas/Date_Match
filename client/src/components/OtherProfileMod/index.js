@@ -44,9 +44,10 @@ function OtherProfileMod({ id }) {
 
     return (
         <Container>
-            <a variant="primary" onClick={handleShow}>
-                See Poster's Profile
-        </a>
+            
+            <Button variant="primary" onClick={handleShow}>
+                See Poster
+        </Button>
 
             <div>
                 <Modal show={show} onHide={handleClose}>
