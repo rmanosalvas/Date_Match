@@ -107,7 +107,6 @@ function Profile() {
                         <Form.Control
                             name="age"
                             value={profile.age}
-                            readOnly
                             onChange={handleInputChange}>
                         </Form.Control>
                     </Col>
