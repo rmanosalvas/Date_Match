@@ -11,7 +11,7 @@ export default {
     },
     isLoggedIn:function(){
         console.log("LOG IN?")
-        return axios.get("/dashboard")
+        return axios.get("/authorize")
     },
     getAllUsers: function() {
         console.log("Client - AllUsers")
@@ -20,8 +20,8 @@ export default {
     getRandomUsers: function(){
         return axios.get("https://randomuser.me/api/?results=50&nat=us")
     },
-    getOneUser: function(id) {
-        return axios.get("/api/user/" + id)
+    getOneUser: function(incomming) {
+        return axios.get("/api/user/" + incomming.id, incomming)
     },
     getProfileInfo: function() {
         return axios.get("/api/profile")

@@ -10,28 +10,30 @@ const dateControllers = require('../controllers/dateControllers');
 // API Routes
 router.use("/api", apiRoutes );
 
-// dashboard route 
-router.get('/', isAuthenticated, function (req, res) {
-  // if the user is authenticated redirect to dashboard
-  res.redirect('/dashboard');
-});
+// // dashboard route 
+// router.get('/', isAuthenticated, function (req, res) {
+//   // if the user is authenticated redirect to dashboard
+//   res.redirect('/dashboard');
+// });
 
 // LOGIN route
 router.post('/api/login', passport.authenticate('local'), function(req, res) {
      res.json(req.user);
   });
 
-// // dashboard route attempt from saturday oct 24 
-// router.get('/dashboard', function (req, res) {
-//   console.log("SERVER SIDE  - route hit")
-//   if (req.user){
-//     res.json("true")
-//   } else if (req.user = undefined){
-//     res.json("false")
-//   }
- 
-
-// });
+// dashboard route attempt from saturday oct 24 
+router.get('/authorize', isAuthenticated, function (req, res) {
+  console.log("SERVER SIDE  - Authorize Route HIT")
+  // console.log(req.user)
+  if (req.user){
+    console.log("the user is logged in")
+    userStatus = "Authenticated"
+    res.json(userStatus)
+  } else{
+    userStatus = "Note Authenticated"
+    res.json(userStatus)
+  }
+});
 
 // router.get("/api/dates", (req, res) => {
 //   console.log("SERVER SIDE - loading community")
@@ -89,7 +91,7 @@ router.put('/api/user/:id', (req, res) => {
 // // If no API routes are hit, send the React app
 // router.use(function(req, res) {
 //     res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
+// });}
 
 module.exports = router;
 
