@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Container, Card, Accordion, Media } from 'react-bootstrap'
-import Nav from '../Nav';
-import Footer from '../Footer'
-import Logout from '../Logout'
-import CreateDate from '../CreateDate'
-import Profile from '../Profile'
-import API from '../../utils/API'
-import DeleteButton from '../DeleteButton'
-import OtherProfileMod from "../OtherProfileMod"
-import UserProfileList from "../UserProfileList"
-// import './style.css';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer'
+import Logout from '../components/Logout'
+import CreateDate from '../components/CreateDate'
+import Profile from '../components/Profile'
+import API from '../utils/API'
+import DeleteButton from '../components/DeleteButton'
+import BulkExports from 'twilio/lib/rest/preview/BulkExports';
+import Community from './Community';
+import OtherProfileMod from "../components/OtherProfileMod"
+import UserProfileList from "../components/UserProfileList"
+import './style.css';
 
 const Dashboard = () => {
     const [userInfo, setUserInfo] = useState([])
@@ -43,6 +45,11 @@ const Dashboard = () => {
             .catch(err => console.log(err))
     }
 
+    const deleteDates = (id) => {
+        console.log("deleting")
+        API.deleteDate(id)
+        window.location.href = "/dashboard"
+    }
     const loadOtherProfile = (id) => {
         console.log("Client Testing")
         console.log(id)
@@ -57,7 +64,7 @@ const Dashboard = () => {
                 <Container>
                     <Row className="communityRow">
                     <h2>User Community</h2>
-                        
+                        <Community />
                     </Row>
                     <Row>
                     <Accordion defaultActiveKey="0">
