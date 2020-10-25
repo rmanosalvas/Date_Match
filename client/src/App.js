@@ -14,6 +14,8 @@ import Profile from './pages/Profile'
 import Authentication from './components/Authentication'
 import './App.css';
 
+
+
 function App() {
   return (
     <Router>
@@ -47,6 +49,10 @@ function App() {
           <Authentication />
           <Nav />
           <Profile />
+          </Route>
+          <Route exact path='/newpage' >
+          <Nav />
+          <Newpage />
           </Route>
         </Switch>
       </div>

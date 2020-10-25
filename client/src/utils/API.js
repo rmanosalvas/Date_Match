@@ -20,8 +20,9 @@ export default {
     getRandomUsers: function(){
         return axios.get("https://randomuser.me/api/?results=50&nat=us")
     },
-    getOneUser: function(incomming) {
-        return axios.get("/api/user/" + incomming.id, incomming)
+    getOneUser: function(id) {
+        console.log("CLIENT API")
+        return axios.get("/api/user/" + id)
     },
     getProfileInfo: function() {
         return axios.get("/api/profile")
