@@ -162,7 +162,6 @@ function Profile() {
                         <Form.Label> You can always catch me: </Form.Label>
                             <Form.Control
                                 name="aboutMe2"
-                                readOnly
                                 defaultValue={profile.aboutMe2} 
                                 onChange={handleInputChange}>
                             </Form.Control>

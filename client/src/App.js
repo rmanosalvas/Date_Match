@@ -21,28 +21,32 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path='/' id='logIn'>
+          <Route exact path='/'>
             <LoginPage />
           </Route> 
-          <Route exact path='/signup' >
+          <Route exact path='/signup'>
           <Sign_up />
-          </Route>
-          <Route exact path='/dashboard' component={Community}>
-          <Nav />
-          <Dashboard />
           </Route>
           <Route exact path='/password'>
           <Password />
+          </Route>
+          <Route exact path='/dashboard'>
+          <Authentication />
+          <Nav />
+          <Dashboard />
           </Route> 
           <Route exact path='/matches' >
+          <Authentication />
           <Nav />
           <Matches />
           </Route>
           <Route exact path='/community'>
-            <Nav />
+          <Authentication />
+          <Nav />
           <Community />
           </Route>
           <Route exact path='/profile' >
+          <Authentication />
           <Nav />
           <Profile />
           </Route>

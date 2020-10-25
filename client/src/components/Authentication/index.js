@@ -1,43 +1,40 @@
-// import React, { useState, useEffect } from 'react';
-// import { } from 'react-bootstrap'
-// import API from '../Authentication'
-// import './style.css';
+import React, { useState, useEffect } from 'react';
+import { } from 'react-bootstrap'
+import API from '../../utils/API'
 
-// const Authentication = () => {
-// const [dates, setDates] = useState([])
 
-// let [isloggedIn, userState] = useState(false)
+const Authentication = () => {
+let [theUser, userState] = useState([])
 
-//     useEffect(() => {
-//         isLoggedIn()
+    useEffect(() => {
+        checkUserStatus()
 
-//     }, [])
+    }, [])
 
-//     function isLoggedIn() {
-//         API.isLoggedIn()
-//             .then(res => {
-//                 console.log("response from server **********************************************")
-//                 console.log(res.data)
-//                 userState(res)
-//                 if (isloggedIn = "true") {
-//                     // redirect 
-//                     console.log("This user is authenticated.")
-
-//                 } else if(isloggedIn = "false") {
-//                     // do nothing
-//                     window.location.href = "/"
-//                 }
-//             })
-//             .catch(err => console.log(err))
-//     }
+    function checkUserStatus() {
+        console.log("checking the users auth")
+        API.isLoggedIn()
+            .then(res => {
+                console.log(res)
+                if (res.status = 500) {
+                    // The user is not Authenticated
+                    console.log("This user is not authenticated")
+                    window.location.href = "/"
+                } else {
+                    console.log("This user is authenticated")
+                }
+            }).catch((err) => {
+                console.log(err)
+            });
+    }
 
 
 
-//     return (
-//         <div>
+    return (
+        <div>
 
-//         </div>
-//     )
-// };
+        </div>
+    )
+};
 
-// export default Authentication;
+export default Authentication;

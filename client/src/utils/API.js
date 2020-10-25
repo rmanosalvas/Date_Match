@@ -11,7 +11,7 @@ export default {
     },
     isLoggedIn:function(){
         console.log("LOG IN?")
-        return axios.get("/dashboard")
+        return axios.get("/authorize")
     },
     getAllUsers: function() {
         console.log("Client - AllUsers")
