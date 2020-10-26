@@ -8,6 +8,10 @@ const userController = require('../controllers/userControllers');
 const dateControllers = require('../controllers/dateControllers');
 const matchControllers = require('../controllers/matchControllers');
 const msgControllers = require('../controllers/msgControllers');
+const multer  = require('multer')
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
+
 
 // API Routes
 router.use("/api", apiRoutes );
@@ -21,7 +25,7 @@ router.use("/api", apiRoutes );
 // LOGIN route
 router.post('/api/login', passport.authenticate('local'), function(req, res) {
      res.json(req.user);
-  });
+});
 
 // dashboard route attempt from saturday oct 24 
 router.get('/authorize', isAuthenticated, function (req, res) {
@@ -41,6 +45,11 @@ router.get('/authorize', isAuthenticated, function (req, res) {
 //   console.log("SERVER SIDE - loading community")
 //   dateControllers.getAllDates(req, res);
 // });
+
+router.post('/avatar', upload.single('avatar'), function (req, res, next) {
+  console.log("SERVER SIDE - changing the users avatar")
+  userController.changeAvatar(req, res)
+})
 
 router.get("/logout", function (req, res) {
   console.log(req.user)
