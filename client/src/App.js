@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from './pages/Signin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Nav from './components/Nav'
-import Sign_up from './pages/Signup';
+import Sign_up from './pages/Sign_up';
 import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
 import Recover from './pages/Recover';

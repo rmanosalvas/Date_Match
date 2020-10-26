@@ -295,9 +295,9 @@ export default function SignUp() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        {/* <Avatar className={classes.avatar}>
+        <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
-        </Avatar> */}
+        </Avatar>
         <Typography component="h1" variant="h5">
           Register Here
         </Typography>
@@ -392,17 +392,13 @@ export default function SignUp() {
                 autoFocus
                 onChange={handleInputChange}
                 >
-                    
-                    <option selected="selected">
-                    --------                    
-                    </option>
                     <option value="Man">
                         He, Him, His
                     </option>
                     <option value="Woman">
                         She, His, Him
                     </option>
-                    <option value="Other">
+                    <option value="Non-binary">
                         They, Them, Theirs
                     </option>
               </TextField>
@@ -420,10 +416,6 @@ export default function SignUp() {
                 autoFocus
                 onChange={handleInputChange}
                 >
-                    
-                    <option selected="selected">
-                    --------                    
-                    </option>
                     <option value="Straight">
                         Straight
                     </option>
