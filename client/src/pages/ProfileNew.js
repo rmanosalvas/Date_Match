@@ -18,7 +18,7 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems } from '../components/ListItems';
+import { mainListItems, secondaryListItems } from '../components/ListItems';
 import Chart from '../components/Chart';
 import Community from './Community';
 import Dates from '../components/Dates'
@@ -386,6 +386,8 @@ export default function ProfileNew() {
                 </div>
                 <Divider />
                 <List>{mainListItems}</List>
+                <Divider />
+                <List>{secondaryListItems}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
@@ -395,11 +397,6 @@ export default function ProfileNew() {
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper>
                                 <Profile />
-                            </Paper>
-                        </Grid>
-                        <Grid>
-                            <Paper>
-                                <Footer />
                             </Paper>
                         </Grid>
                     </Grid>

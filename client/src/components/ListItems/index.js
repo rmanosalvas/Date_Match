@@ -10,8 +10,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import CreateDate from '../CreateDate'
-
-
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 
 export const mainListItems = (
@@ -36,7 +36,7 @@ export const mainListItems = (
     </ListItem>
     <ListItem button component="a" href="/matches">
       <ListItemIcon>
-        <LibraryBooksIcon />
+        <WhatshotIcon />
       </ListItemIcon>
       <ListItemText primary="Matches" />
     </ListItem>
@@ -47,6 +47,18 @@ export const mainListItems = (
       <Logout />
     </ListItem>
   </div>
+
 );
 
+export const secondaryListItems = (
+  <div>
+    <ListSubheader inset></ListSubheader>
+    <ListItem >
+      <ListItemIcon>
+        <TwitterIcon />
+      </ListItemIcon>
+      <CreateDate/>
+    </ListItem>
+  </div>
+); 
 
