@@ -45,10 +45,10 @@ function CreateDate() {
         }
     };
     return (
-        <div>
-        <a variant="primary" onClick={handleShow}>
+        <li class="nav-item">
+        <Button onClick={handleShow} class="nav-link" variant="outline-success" size="lg">
             New Date
-        </a>
+        </Button>
         <Container >
             <Modal show={show} onHide={handleClose} >
                 <Modal.Header closeButton>
@@ -114,7 +114,7 @@ function CreateDate() {
                 </Modal.Footer>
             </Modal>
         </Container>
-    </div>
+    </li>
     )
 }
 

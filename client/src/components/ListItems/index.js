@@ -4,67 +4,49 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import Logout from '../Logout'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import CreateDate from '../CreateDate'
+
+
+
 
 export const mainListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon >
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+    <ListItem button component="a" href="/dashboard">
+        <ListItemIcon >
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItem>
-    <ListItem button>
+    <ListItem button component="a" href="/community">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="Community" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component="a" href="/profile">
       <ListItemIcon>
-        <BarChartIcon />
+        <InsertEmoticonIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Profile" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component="a" href="/matches">
       <ListItemIcon>
-        <LayersIcon />
+        <LibraryBooksIcon />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary="Matches" />
+    </ListItem>
+    <ListItem button >
+      <ListItemIcon>
+        <ExitToAppIcon />
+      </ListItemIcon>
+      <Logout />
     </ListItem>
   </div>
 );
 
-export const secondaryListItems = (
-  <div>
-    <ListSubheader inset>Saved reports</ListSubheader>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItem>
-  </div>
-);
+

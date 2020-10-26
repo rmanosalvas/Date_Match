@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
         avatar:{//Signup & Profile
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: "../profile-pic-placeholder.png"
+            defaultValue: "https://imgur.com/160Clta.png"
         },        
         gender: {//Signup & Profile
             type: DataTypes.STRING,

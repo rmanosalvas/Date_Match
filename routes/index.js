@@ -8,6 +8,10 @@ const userController = require('../controllers/userControllers');
 const dateControllers = require('../controllers/dateControllers');
 const matchControllers = require('../controllers/matchControllers');
 const msgControllers = require('../controllers/msgControllers');
+const multer  = require('multer')
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
+
 
 // API Routes
 router.use("/api", apiRoutes );
@@ -21,7 +25,7 @@ router.use("/api", apiRoutes );
 // LOGIN route
 router.post('/api/login', passport.authenticate('local'), function(req, res) {
      res.json(req.user);
-  });
+});
 
 // dashboard route attempt from saturday oct 24 
 router.get('/authorize', isAuthenticated, function (req, res) {
@@ -42,6 +46,10 @@ router.get('/authorize', isAuthenticated, function (req, res) {
 //   dateControllers.getAllDates(req, res);
 // });
 
+router.post('/avatar', upload.single('avatar'), function (req, res, next) {
+  console.log("SERVER SIDE - changing the users avatar")
+  userController.changeAvatar(req, res)
+})
 
 router.get("/logout", function (req, res) {
   console.log(req.user)
@@ -50,7 +58,10 @@ router.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
-
+router.post("/recover", (req, res) => {
+  console.log("SERVER SIDE - Request to change password")
+  userController.recoverAccount(req, res);
+});
 
 router.get("/api/allusers", (req, res) => {
   console.log("SERVER SIDE - loading community")
@@ -73,10 +84,17 @@ router.get("/api/user/:id", (req, res) => {
 });
 
 router.put('/api/user/:id', (req, res) => {
-  
-  console.log("Getting messages for match")
-  msgControllers.getMsgs(req, res)
+  console.log("SERVER SIDE - making new password for the user")
+  userController.updateProfile(req, res)
 });
+
+router.put('/api/password', (req, res) => {
+  console.log("SERVER SIDE - changing the users passwrd")
+  userController.changeUserPassword(req, res)
+});
+
+
+
 
 
 router.get("/api/messages/match/:id", (req, res) => {

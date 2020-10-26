@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -12,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import API from '../utils/API';
+
 
 function Copyright() {
   return (
@@ -27,6 +28,7 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -47,97 +49,76 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const [users, setUsers] = useState([])
+  const [formObject, setFormObject] = useState([])
+
+  function recoverUserAccount(){
+    console.log(formObject)
+      console.log("Sending Recovery Request to the server")
+      API.recoverAccount({
+          email: formObject.email,
+          phone: formObject.phone
+      }).then((res)=> {
+          console.log("New password sent to the user")
+          window.location.href = "/";
+      })
+      .catch(err => console.log(err))
+  }
+
+  function handleInputChange(event) {
+      const { name, value } = event.target;
+      setFormObject({...formObject, [name]: value})
+  };
+
+  function handleFormSubmit(event) {
+      event.preventDefault();
+      if (
+          formObject.email && 
+          formObject.phone) {
+              recoverUserAccount()
+          }
+  };  
+
+
   const classes = useStyles();
 
   return (
-    <div component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        {/* <Avatar className={classes.avatar}>
+        <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
-        </Avatar> */}
+        </Avatar>
         <Typography component="h1" variant="h5">
-          Register Here
+          Forgot your password?
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                // variant="outlined"
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                // variant="muted"
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
                 name="phone"
-                variant="outlined"
-                required
-                fullWidth
-                id="phone"
                 label="Phone Number"
-                // Need to find documentation
-                autoFocus
+                type="phone"
+                id="phone"
+                autoComplete="current-password"
+                onChange={handleInputChange}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="Age"
-                label="Age"
-                name="Age"
-                autoComplete="Age"
-                type="number"
-              />
-            </Grid>
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
           </Grid>
           <Button
             type="submit"
@@ -145,13 +126,14 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleFormSubmit}
           >
-            Sign Up
+            Send Me A New Password!
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link component="a" href="/" variant="body2">
-                Already have an account? Sign in
+                Return the login page
               </Link>
             </Grid>
           </Grid>
@@ -160,6 +142,6 @@ export default function SignUp() {
       <Box mt={5}>
         <Copyright />
       </Box>
-    </div>
+    </Container>
   );
 }

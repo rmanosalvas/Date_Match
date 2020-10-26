@@ -7,6 +7,7 @@ export default {
         return axios.post("/api/login", userData)
     },
     logMeOut: function(){
+        console.log("CLIENT - loggin the user out")
         return axios.get("/logout")
     },
     isLoggedIn:function(){
@@ -34,6 +35,14 @@ export default {
     createUser: function(data){
         return axios.post("/api/user", data)
     },
+    recoverAccount: function( formObject ){
+        console.log("CLIENT - LOGIN")
+        return axios.post("/recover", formObject)
+    },
+    changeUserPassword: function(password) {
+        console.log("CLIENT - Changing users password")
+        return axios.put("/api/password", password)
+    },
     // DATE REQUESTS
     getDates: function(){
         console.log("CLIENT - getting dates")
@@ -51,7 +60,7 @@ export default {
     // Matches
     newMatch: function(matchData){
         console.log("CLIENT - creating new match")
-        return axios.get("/api/match", matchData)
+        return axios.post("/api/match", matchData)
     },
     getMatches: function(){
         console.log("CLIENT - getting matches")
@@ -62,10 +71,10 @@ export default {
         console.log("CLIENT - deleting match")
         return axios.delete("/api/matches/" + id)
     },
-
-    recover: function(accountInfo){
-        return axios.put("/api/user/recover", accountInfo)
-    },
-
+    changeUserAvatar: function(formData){
+        console.log("CLIENT - uploading avatar")    
+        return axios.post("/avatar",formData)
+            
+    }
     
 }

@@ -1,6 +1,12 @@
 // Connect to the DB
 const db = require('../models');
 const notifier = require('../config/middleware/notifier');
+const generatePassword = require('password-generator');
+const toButcketFS = require("../config/middleware/toButcketFS.js");
+const multer  = require('multer')
+const storage = multer.memoryStorage()
+const bcrypt = require("bcryptjs");
+const AWS_BUCKET_PUB = process.env.AWS_PUBLIC_URL
 
 module.exports = {
     // Route for creating new user
@@ -107,13 +113,95 @@ module.exports = {
 		})
 	},
 	changeAvatar: (req, res) => {
-		// change the users avatar
+		console.log(req)
+		console.log("SERVER SIDE - Changing User profile picture")
+		console.log(req.file)
+		toButcketFS((req.file.buffer), (req.file.originalname))
+		// console.log("https://bucketeer-6c0bca0c-8c17-4a2e-a0c9-6c23c9400d69.s3.amazonaws.com/public/"+req.file.originalname)
+		// change the avatar in the db (PUT)
+		db.User.update(
+		  {
+			avatar: "https://bucketeer-6c0bca0c-8c17-4a2e-a0c9-6c23c9400d69.s3.amazonaws.com/public/"+req.file.originalname
+		  },{ where : { id: req.user.id}},
+		  ).then(function (result) {
+			notifier("Nice a new photo! Now get out there and find some new dates!", req.user.phone) ;
+			res.json(result);
+		})
+		
 	},
-	changePassword: (req, res) => {
-		// change the users avatar
+	changeUserPassword: (req, res) => {
+		console.log(req)
+		// find the current users information
+		db.User.findOne({
+            where: {
+				id: req.user.id,
+            }
+        }).then(function (dbUser) {
+			console.log("user found")
+			console.log(dbUser)
+            // If there's no user with the given email
+            if (!dbUser) {
+				res.status(500).send('500 - the user was not logged in, nothing to change');	
+            }// If there is a user with the given email, but the password the user gives us is incorrect
+            else {
+				var salt = bcrypt.genSaltSync(10);
+				newpw = bcrypt.hashSync(req.body.password, salt);
+				// change the users password and text it to them
+				db.User.update(
+					{
+						password: newpw
+					},{ where : { id: dbUser.id}},
+				  ).then(function (result) {
+					  notifier("Someone just changed your password on Date_Match. If this wasn't you should consider securing your account", dbUser.phone) ;
+					  res.json(result);
+					  res.status(200).send('200 - the password and email match change your password');
+				})
+            
+			}
+            
+        });
 	},
-	accountSettings: (req, res) => {
-		// change the users account settings
+	recoverAccount: (req, res) => {
+		console.log(req)
+		db.User.findOne({
+            where: {
+				email: req.body.email,
+				phone: req.body.phone
+            }
+        }).then(function (dbUser) {
+			console.log("dataFound!!!!!")
+			console.log(dbUser)
+            // If there's no user with the given email
+            if (!dbUser) {
+				res.status(500).send('500 - incorrect info');	
+            }
+            // If there is a user with the given email, but the password the user gives us is incorrect
+            else if (!dbUser.validPassword(dbUser.password)) {
+				var salt = bcrypt.genSaltSync(10);
+				// make new pw for the user
+				pwraw = generatePassword()
+				newpw = bcrypt.hashSync(pwraw, salt);
+				// change the users password and text it to them
+				db.User.update(
+					{
+						password: newpw
+					},{ where : { id: dbUser.id}},
+				  ).then(function (result) {
+					  notifier("Hey, "+dbUser.first_name+" your new password is:   " + pwraw, dbUser.phone) ;
+					  res.json(result);
+					  res.status(200).send('200 - the password and email match change your password');
+				})
+            }
+          
+            
+        });
+
+		// check if the request contains a vaild email and password
+
+		// change the users password
+
+		
+		
 	},
 	changePassword: (req, res) => {
 		// change the users avatar
