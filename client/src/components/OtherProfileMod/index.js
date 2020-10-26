@@ -67,7 +67,6 @@ function OtherProfileMod({ dateInfo }) {
 
     }
 
-
     return (
         <Container>
             

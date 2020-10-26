@@ -72,7 +72,6 @@ const Dashboard = () => {
                         </Accordion>
                     </Row>
 
-                    <Footer />
                 </Container>
             </div>
         </div>

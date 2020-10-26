@@ -1,6 +1,9 @@
 // Connect to the DB
 const db = require('../models');
 const notifier = require('../config/middleware/notifier');
+const generatePassword = require('password-generator');
+const bcrypt = require("bcryptjs");
+
 
 module.exports = {
     // Route for creating new user
@@ -106,14 +109,82 @@ module.exports = {
 			res.json(result);
 		})
 	},
-	changeAvatar: (req, res) => {
-		// change the users avatar
+	// changeAvatar: (req, res) => {
+	// 	// change the users avatar
+	// },
+	changeUserPassword: (req, res) => {
+		console.log(req)
+		// find the current users information
+		db.User.findOne({
+            where: {
+				id: req.user.id,
+            }
+        }).then(function (dbUser) {
+			console.log("user found")
+			console.log(dbUser)
+            // If there's no user with the given email
+            if (!dbUser) {
+				res.status(500).send('500 - the user was not logged in, nothing to change');	
+            }// If there is a user with the given email, but the password the user gives us is incorrect
+            else {
+				var salt = bcrypt.genSaltSync(10);
+				newpw = bcrypt.hashSync(req.body.password, salt);
+				// change the users password and text it to them
+				db.User.update(
+					{
+						password: newpw
+					},{ where : { id: dbUser.id}},
+				  ).then(function (result) {
+					  notifier("Hey, "+dbUser.first_name+" your new password is:   " + pwraw, dbUser.phone) ;
+					  res.json(result);
+					  res.status(200).send('200 - the password and email match change your password');
+				})
+            
+			}
+            
+        });
 	},
-	changePassword: (req, res) => {
-		// change the users avatar
-	},
-	accountSettings: (req, res) => {
-		// change the users account settings
+	recoverAccount: (req, res) => {
+		console.log(req)
+		db.User.findOne({
+            where: {
+				email: req.body.email,
+				phone: req.body.phone
+            }
+        }).then(function (dbUser) {
+			console.log("dataFound!!!!!")
+			console.log(dbUser)
+            // If there's no user with the given email
+            if (!dbUser) {
+				res.status(500).send('500 - incorrect info');	
+            }
+            // If there is a user with the given email, but the password the user gives us is incorrect
+            else if (!dbUser.validPassword(dbUser.password)) {
+				var salt = bcrypt.genSaltSync(10);
+				// make new pw for the user
+				pwraw = generatePassword()
+				newpw = bcrypt.hashSync(pwraw, salt);
+				// change the users password and text it to them
+				db.User.update(
+					{
+						password: newpw
+					},{ where : { id: dbUser.id}},
+				  ).then(function (result) {
+					  notifier("Hey, "+dbUser.first_name+" your new password is:   " + pwraw, dbUser.phone) ;
+					  res.json(result);
+					  res.status(200).send('200 - the password and email match change your password');
+				})
+            }
+          
+            
+        });
+
+		// check if the request contains a vaild email and password
+
+		// change the users password
+
+		
+		
 	},
 	changePassword: (req, res) => {
 		// change the users avatar

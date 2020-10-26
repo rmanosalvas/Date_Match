@@ -6,9 +6,9 @@
 
 } */
 
-#root{
+/* #root{
   background-color: rgb(225, 218, 218);
-}
+} */
 .block{
   overflow-x: scroll;
   overflow-y: hidden;

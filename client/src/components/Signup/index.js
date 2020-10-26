@@ -50,7 +50,7 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <div component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         {/* <Avatar className={classes.avatar}>
@@ -150,7 +150,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link component="a" href="/" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
@@ -160,6 +160,6 @@ export default function SignUp() {
       <Box mt={5}>
         <Copyright />
       </Box>
-    </Container>
+    </div>
   );
 }
