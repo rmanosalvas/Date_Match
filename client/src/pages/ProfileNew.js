@@ -19,6 +19,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/ListItems';
+import FilesUploadComponent from "../components/FileUpload";
 import Chart from '../components/Chart';
 import Community from './Community';
 import Dates from '../components/Dates'
@@ -102,10 +103,11 @@ function Profile() {
                     <Figure.Caption>
                         From {profile.location}
                     </Figure.Caption>
+                    <FilesUploadComponent />
             </Figure>
             </Col>
             <Col>
-            <h1>{profile.first_name} {profile.first_name}</h1>
+            <h1>{profile.first_name} {profile.last_name}</h1>
             <p></p>
 
             </Col>
@@ -149,6 +151,7 @@ function Profile() {
                     <Col>
                     <Form.Control
                             name="gender"
+                            readOnly
                             defaultValue={profile.gender}
                             onChange={handleInputChange}>
                         </Form.Control>                    

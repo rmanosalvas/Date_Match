@@ -31,7 +31,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Data Match
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -39,7 +39,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth = 175;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -184,6 +184,10 @@ export default function Dashboard() {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
+
+
+
+
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
@@ -210,6 +214,8 @@ export default function Dashboard() {
           </Box>
         </Container>
       </main>
+
+      
     </div>
   );
 }
