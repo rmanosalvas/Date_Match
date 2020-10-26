@@ -70,6 +70,11 @@ export default {
     deleteMatch: function(id){
         console.log("CLIENT - deleting match")
         return axios.delete("/api/matches/" + id)
+    },
+    changeUserAvatar: function(formData){
+        console.log("CLIENT - uploading avatar")    
+        return axios.post("/avatar",formData)
+            
     }
     
 }

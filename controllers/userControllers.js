@@ -2,8 +2,11 @@
 const db = require('../models');
 const notifier = require('../config/middleware/notifier');
 const generatePassword = require('password-generator');
+const toButcketFS = require("../config/middleware/toButcketFS.js");
+const multer  = require('multer')
+const storage = multer.memoryStorage()
 const bcrypt = require("bcryptjs");
-
+const AWS_BUCKET_PUB = process.env.AWS_PUBLIC_URL
 
 module.exports = {
     // Route for creating new user
@@ -109,9 +112,23 @@ module.exports = {
 			res.json(result);
 		})
 	},
-	// changeAvatar: (req, res) => {
-	// 	// change the users avatar
-	// },
+	changeAvatar: (req, res) => {
+		console.log(req)
+		console.log("SERVER SIDE - Changing User profile picture")
+		console.log(req.file)
+		toButcketFS((req.file.buffer), (req.file.originalname))
+		// console.log("https://bucketeer-6c0bca0c-8c17-4a2e-a0c9-6c23c9400d69.s3.amazonaws.com/public/"+req.file.originalname)
+		// change the avatar in the db (PUT)
+		db.User.update(
+		  {
+			avatar: "https://bucketeer-6c0bca0c-8c17-4a2e-a0c9-6c23c9400d69.s3.amazonaws.com/public/"+req.file.originalname
+		  },{ where : { id: req.user.id}},
+		  ).then(function (result) {
+			notifier("Nice a new photo! Now get out there and find some new dates!", req.user.phone) ;
+			res.json(result);
+		})
+		
+	},
 	changeUserPassword: (req, res) => {
 		console.log(req)
 		// find the current users information
@@ -135,7 +152,7 @@ module.exports = {
 						password: newpw
 					},{ where : { id: dbUser.id}},
 				  ).then(function (result) {
-					  notifier("Hey, "+dbUser.first_name+" your new password is:   " + pwraw, dbUser.phone) ;
+					  notifier("Someone just changed your password on Date_Match. If this wasn't you should consider securing your account", dbUser.phone) ;
 					  res.json(result);
 					  res.status(200).send('200 - the password and email match change your password');
 				})
