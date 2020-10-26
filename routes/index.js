@@ -42,7 +42,6 @@ router.get('/authorize', isAuthenticated, function (req, res) {
 //   dateControllers.getAllDates(req, res);
 // });
 
-
 router.get("/logout", function (req, res) {
   console.log(req.user)
   req.logout();
@@ -50,7 +49,10 @@ router.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
-
+router.post("/recover", (req, res) => {
+  console.log("SERVER SIDE - Request to change password")
+  userController.recoverAccount(req, res);
+});
 
 router.get("/api/allusers", (req, res) => {
   console.log("SERVER SIDE - loading community")
@@ -73,10 +75,17 @@ router.get("/api/user/:id", (req, res) => {
 });
 
 router.put('/api/user/:id', (req, res) => {
-  
-  console.log("Getting messages for match")
-  msgControllers.getMsgs(req, res)
+  console.log("SERVER SIDE - making new password for the user")
+  userController.updateProfile(req, res)
 });
+
+router.put('/api/password', (req, res) => {
+  console.log("SERVER SIDE - changing the users passwrd")
+  userController.changeUserPassword(req, res)
+});
+
+
+
 
 
 router.get("/api/messages/match/:id", (req, res) => {
