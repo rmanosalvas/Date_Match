@@ -19,7 +19,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems } from "../components/ListItems";
-import Chart from "../components/Chart";
+
 import Community from "./Community";
 import Dates from "../components/Dates";
 // import Deposits from './Deposits';
@@ -31,7 +31,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Data Match
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -39,7 +39,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth = 175;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -182,6 +182,10 @@ export default function Dashboard() {
         <Divider />
         <List>{mainListItems}</List>
       </Drawer>
+
+
+
+
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
@@ -213,6 +217,8 @@ export default function Dashboard() {
           </Box>
         </Container>
       </main>
+
+      
     </div>
   );
 }
