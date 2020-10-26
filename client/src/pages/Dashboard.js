@@ -18,8 +18,8 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems } from "../components/ListItems";
-
+import { mainListItems, secondaryListItems } from "../components/ListItems";
+import Chart from "../components/Chart";
 import Community from "./Community";
 import Dates from "../components/Dates";
 // import Deposits from './Deposits';
@@ -181,6 +181,8 @@ export default function Dashboard() {
         </div>
         <Divider />
         <List>{mainListItems}</List>
+        <Divider />
+        <List>{secondaryListItems}</List>
       </Drawer>
 
 
@@ -204,11 +206,6 @@ export default function Dashboard() {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <Dates />
-              </Paper>
-            </Grid>
-            <Grid>
-              <Paper>
-                <Footer />
               </Paper>
             </Grid>
           </Grid>
