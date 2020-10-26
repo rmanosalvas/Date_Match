@@ -4,7 +4,6 @@ import OtherProfileMod from "../OtherProfileMod"
 import DeleteButton from '../DeleteButton'
 import API from '../../utils/API'
 
-
 function UserProfileList({ data }) {
     console.log('LOL')
     console.log(data)
