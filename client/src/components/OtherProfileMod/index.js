@@ -1,5 +1,4 @@
 import React, { Component, useState, useEffect } from "react";
-
 import { Container, Row, Col, Form, Button, Card, Modal, Jumbotron, Figure } from 'react-bootstrap';
 import API from '../../utils/API'
 
@@ -7,20 +6,34 @@ import API from '../../utils/API'
 
 
 
-function OtherProfileMod({ id }) {
+
+function OtherProfileMod({ dateInfo }) {
+    console.log("date info from OtherProfileMod")
+    console.log(dateInfo.UserId)
+
     const [profile, setProfile] = useState([])
+    const [currentProfile, setCurrentProfile] = useState([])
+    useEffect(() => {
+        getCurrentUser()
+    }, [])
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
 
-    // useEffect(() => {
-    //     console.log("loading profile")
-    //     loadProfile()
 
-    // }, [])
+    function getCurrentUser(){
+        API.getProfileInfo(currentProfile.id)
+        .then(res => {
+            console.log("getting the current user to be matched with")
+            console.log(res)
+            setCurrentProfile(res.data)
+        })
+        .catch(err => console.log(err))
+    }
+
+
     const handleShow = () => {
-        API.getOneUser(id).then((res) => {
+        API.getOneUser(dateInfo.UserId).then((res) => {
             setProfile(res.data)
             console.log(res)
         })
@@ -38,6 +51,23 @@ function OtherProfileMod({ id }) {
     //         .catch(err => console.log(err))
     // }
 
+    function matchUsers() {
+        console.log(profile)
+        // define the match object
+        var thisMatch = {
+            user1: currentProfile.id,//client users id
+            user2: profile.id, //posting users id
+        }
+
+        API.newMatch(thisMatch)
+        .then(res => {
+            console.log(res)
+
+        }).catch(err => console.log(err))
+
+        window.location.href = "/matches"
+
+    }
 
     return (
         <Container>
@@ -137,6 +167,11 @@ function OtherProfileMod({ id }) {
                                 </Col>
                             </Row>
                         </Form>
+                        <Row>
+                            <Button variant="danger" onClick={() => matchUsers()}>
+                                Match With 
+                            </Button>
+                        </Row>
                     </Jumbotron>
                 </Modal>
             </div>

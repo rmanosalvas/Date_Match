@@ -7,10 +7,11 @@ const isAuthenticated = require("../config/middleware/isAuthenticated.js");//Che
 module.exports = {
     newMatch: (req, res) => {
       console.log("SERVER ACTION - Creating New Match")
+      console.log(req)
         db.Match.create({
             user1: req.body.user1,
             user2: req.body.user2,
-            UserId: req.body.UserId
+            // UserId: req.body.UserId
           },).then((newMatch) => {
             // return the result in JSON format
             res.json(newMatch);

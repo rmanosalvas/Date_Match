@@ -5,6 +5,10 @@ import DeleteButton from '../DeleteButton'
 import API from '../../utils/API'
 
 function UserProfileList({ data }) {
+    console.log('LOL')
+    console.log(data)
+
+
 
     const deleteDates = (id) => {
         console.log("deleting")
@@ -35,7 +39,7 @@ function UserProfileList({ data }) {
                         Comment
                         </Accordion.Toggle>   
                         </Col>
-                        <Col xs={6}><OtherProfileMod as={Button} id={date.UserId} /></Col>
+                        <Col xs={6}><OtherProfileMod as={Button} dateInfo={date} /></Col>
                         </Row>
                         <Accordion.Collapse eventKey={date.id}>
                     <Card.Body>

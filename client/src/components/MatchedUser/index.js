@@ -6,7 +6,6 @@ import API from '../../utils/API'
 
 
 function MatchedUser( {data } ) {
-    console.log("getting users "+ data)
     const [someUser, setUsers] = useState([]);
 
         // Load all matches and store them with setMatches
