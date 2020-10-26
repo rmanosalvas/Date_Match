@@ -40,7 +40,6 @@ function App() {
           </Route> 
           <Route exact path='/matches' >
           <Authentication />
-          <Nav />
           <Matches />
           </Route>
           <Route exact path='/community'>
