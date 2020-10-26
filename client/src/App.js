@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/Signin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Nav from './components/Nav'
-import Sign_up from './pages/Sign_up';
+import Sign_up from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
+import Recover from './pages/Recover';
 import Matches from './pages/Matches'
 import Newpage from './pages/Newpage'
 import Nav from './components/Nav'
