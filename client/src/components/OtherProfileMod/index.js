@@ -20,6 +20,7 @@ function OtherProfileMod({ dateInfo }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
+
     function getCurrentUser(){
         API.getProfileInfo(currentProfile.id)
         .then(res => {
@@ -29,6 +30,7 @@ function OtherProfileMod({ dateInfo }) {
         })
         .catch(err => console.log(err))
     }
+
 
     const handleShow = () => {
         API.getOneUser(dateInfo.UserId).then((res) => {

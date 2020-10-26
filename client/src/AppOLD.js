@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from './pages/Signin';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Nav from './components/Nav'
-import Sign_up from './pages/Sign_up';
+import Sign_up from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
 import Recover from './pages/Recover';
@@ -14,9 +14,6 @@ import Community from './pages/Community'
 import Profile from './pages/Profile'
 import Authentication from './components/Authentication'
 import './App.css';
-import MatchesNew from './pages/MatchesNew'
-import ProfileNew from './pages/ProfileNew'
-import CommunityNew from './pages/CommunityNew'
 
 
 function App() {
@@ -26,40 +23,39 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <LoginPage />
-          </Route>
+          </Route> 
           <Route exact path='/signup'>
-            <Sign_up />
+          <Sign_up />
           </Route>
           <Route exact path='/recover'>
           <Recover />
           </Route>
-          <Route exact path='/password'>
+          <Route exact path='/Password'>
           <Authentication />
-            <Password />
+          <Password />
           </Route>
           <Route exact path='/dashboard'>
-            <Authentication />
-            <Dashboard />
-          </Route>
+          <Authentication />
+          <Dashboard />          
+          </Route> 
           <Route exact path='/matches' >
-            <Authentication />
-            <MatchesNew />
-            {/* <Matches /> */}
-
+          <Authentication />
+          <Nav />
+          <Matches />
           </Route>
           <Route exact path='/community'>
-            <Authentication />
-            <CommunityNew />
-            {/* <Community /> */}
-
+          <Authentication />
+          <Nav />
+          <Community />
           </Route>
           <Route exact path='/profile' >
-            <Authentication />
-            <ProfileNew />
-            {/* <Profile /> */}
+          <Authentication />
+          <Nav />
+          <Profile />
           </Route>
           <Route exact path='/newpage' >
-            <Newpage />
+          <Nav />
+          <Newpage />
           </Route>
         </Switch>
       </div>

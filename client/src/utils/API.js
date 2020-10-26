@@ -32,8 +32,8 @@ export default {
         console.log("Client - updating user")
         return axios.put("/api/user/" + form.id, form)
     },
-    createUser: function(){
-        return axios.post("/api/user")
+    createUser: function(data){
+        return axios.post("/api/user", data)
     },
     recoverAccount: function( formObject ){
         console.log("CLIENT - LOGIN")
