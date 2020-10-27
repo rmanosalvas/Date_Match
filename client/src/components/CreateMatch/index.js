@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button, Card, Modal, Jumbotron, Figure } from 'react-bootstrap';
+import React, {  useState } from "react";
+import {  Button, Card  } from 'react-bootstrap';
 import API from '../../utils/API'
 
 

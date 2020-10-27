@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container, Card, Accordion, Media } from 'react-bootstrap'
-import Nav from '../Nav';
-import Footer from '../Footer'
-import Logout from '../Logout'
-import CreateDate from '../CreateDate'
-import Profile from '../Profile'
+import { Row, Col, Container, Accordion } from 'react-bootstrap'
 import API from '../../utils/API'
-import DeleteButton from '../DeleteButton'
-import OtherProfileMod from "../OtherProfileMod"
 import UserProfileList from "../UserProfileList"
 // import './style.css';
 
