@@ -37,6 +37,7 @@
     "password-generator": "^2.3.2",
     "path": "^0.12.7",
     "sequelize": "^4.39.0",
+    "serve": "^11.3.2",
     "twilio": "^3.50.0",
     "underscore": "^1.11.0"
   }
