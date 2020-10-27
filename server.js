@@ -5,7 +5,6 @@ const routes = require('./routes'); //Requiring routes folder that can hold api 
 const app = express();
 const passport = require("./config/passport"); // Requiring passport
 const session = require("express-session"); // Requiring session for passport
-
 const PORT = process.env.PORT || 3002;
 
 // passport config
@@ -20,11 +19,29 @@ app.use(express.json());
 if(process.env.NODE_ENV === 'production'){
 	app.use(express.static('client/build/public'));
 }
-// html routes
-app.get('*', (req, res) => {
+// Html Routes
+app.get('/', (req, res) => {
+	console.log("kjsfgahisdbfgasdfajsdfasdfasdf")
 	res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
-//using the routes folder.  The is a index file the will direct routes traffic in the folder
+
+app.get('/dashboard', function (req, res) {
+	res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+app.get('/matches', function (req, res) {
+	res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+app.get('/community', function (req, res) {
+	res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+app.get('/profile', function (req, res) {
+	res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+app.get('/password', function (req, res) {
+	res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
+//Api Routes  The is a index file the will direct routes traffic in the folder
 app.use(routes);
 
 //{ force: false } to not overwrite DB each app load

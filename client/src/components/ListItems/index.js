@@ -60,7 +60,7 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Change Password" />
     </ListItem>
-    <ListItem button >
+    <ListItem button component="a" href="/" onclick={Logout}>
       <ListItemIcon>
         <ExitToAppIcon />
       </ListItemIcon>
