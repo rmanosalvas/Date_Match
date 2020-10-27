@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Avatar, Button, CssBaseline, TextField, Link, Grid, Box,Typography, makeStyles, Container } from '@material-ui/core/';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import API from '../utils/API';

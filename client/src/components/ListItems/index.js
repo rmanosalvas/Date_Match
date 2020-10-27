@@ -4,11 +4,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import PeopleIcon from '@material-ui/icons/People';
-import Logout from '../Logout'
+import Logout from '../Logout';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import CreateDate from '../CreateDate'
 import WhatshotIcon from '@material-ui/icons/Whatshot';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -60,7 +58,7 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Change Password" />
     </ListItem>
-    <ListItem button component="a" href="/" onclick={Logout}>
+    <ListItem button component="a" href="/" onClick={Logout}>
       <ListItemIcon>
         <ExitToAppIcon />
       </ListItemIcon>

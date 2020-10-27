@@ -2,18 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginPage from './pages/Signin';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Nav from './components/Nav'
 import Sign_up from './pages/Sign_up';
 import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
 import Recover from './pages/Recover';
-import Matches from './pages/Matches'
-import Nav from './components/Nav'
-import Authentication from './components/Authentication'
+import Authentication from './components/Authentication';
 import './App.css';
-import MatchesNew from './pages/MatchesNew'
-import ProfileNew from './pages/ProfileNew'
-import CommunityNew from './pages/CommunityNew'
+import MatchesNew from './pages/MatchesNew';
+import ProfileNew from './pages/ProfileNew';
+import CommunityNew from './pages/CommunityNew';
 
 
 function App() {
@@ -41,14 +38,10 @@ function App() {
           <Route exact path='/matches' >
             <Authentication />
             <MatchesNew />
-            {/* <Matches /> */}
-
           </Route>
           <Route exact path='/community'>
             <Authentication />
             <CommunityNew />
-            {/* <Community /> */}
-
           </Route>
           <Route exact path='/profile' >
             <Authentication />

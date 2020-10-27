@@ -3,12 +3,9 @@ import clsx from "clsx";
 import { makeStyles, CssBaseline, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, Link } from "@material-ui/core/";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "../components/ListItems";
-import Chart from "../components/Chart";
 import Community from "./Community";
 import Dates from "../components/Dates";
-import Footer from "../components/Footer";
 
 
 
@@ -172,9 +169,9 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
+          <Grid container spacing={8}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
                 <Community />
               </Paper>

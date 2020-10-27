@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Component } from "react";
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, makeStyles, Container } from "@material-ui/core/";
+import { Avatar, Button, CssBaseline, TextField, Link, Grid, Box, Typography, makeStyles, Container } from "@material-ui/core/";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import API from "../../utils/API";
 import validator from "validator";

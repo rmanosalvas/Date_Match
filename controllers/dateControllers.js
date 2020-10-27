@@ -9,11 +9,6 @@ module.exports = {
           order: [
             ['createdAt', 'DESC']
           ],
-          // include: [{
-          //   model: User,
-          //   as: 'UserFound',
-          //   where: { UserId: db.User.id } //
-          // }]
         })
         .then(function (dates) {
           res.json(dates);
@@ -29,7 +24,6 @@ module.exports = {
           .then(function (dbPost) {
             res.json(dbPost)
           }).catch((err) => {
-            // if there are errors log them to the console
             console.log(err)
           });;
     },
@@ -43,9 +37,7 @@ module.exports = {
             UserId: req.user.id
         }).then((dbPost) => {
           console.log("Console New Date Created!" + "This is date # " + dbPost.id)
-            // return the result in JSON format
         }).catch((err) => {
-          // if there are errors log them to the console
           console.log(err)
         });
     },

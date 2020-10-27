@@ -1,3 +1,7 @@
+
+// Messaging models to create user interaction
+// NOT FINISHED
+
 module.exports = function (sequelize, DataTypes) {
     const Message = sequelize.define("Message", {
         // msgID: {
