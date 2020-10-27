@@ -2,7 +2,7 @@
   "name": "starter-code-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://enigmatic-escarpment-35246.herokuapp.com/",
+  "homepage": "https://lit-forest-34223.herokuapp.com/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
