@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const db = require('./models'); //Requiring models folder to set up sequelize
 const routes = require('./routes'); //Requiring routes folder that can hold api and html routes
@@ -17,9 +18,12 @@ app.use(express.json());
 
 // Serve up static assets
 if(process.env.NODE_ENV === 'production'){
-	app.use(express.static('client/build'));
+	app.use(express.static('client/build/public'));
 }
-
+// html routes
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 //using the routes folder.  The is a index file the will direct routes traffic in the folder
 app.use(routes);
 
