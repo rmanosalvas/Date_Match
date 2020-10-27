@@ -11,7 +11,7 @@ export default {
         return axios.get("/logout")
     },
     isLoggedIn:function(){
-        console.log("LOG IN?")
+        console.log("CLIENT - API - Checking if the req is authorized")
         return axios.get("/authorize")
     },
     getAllUsers: function() {

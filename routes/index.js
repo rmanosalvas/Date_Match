@@ -12,39 +12,26 @@ const multer  = require('multer')
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
 
+// LOGIN route
+router.post('/api/login', passport.authenticate('local'), function(req, res) {
+  res.json(req.user);
+});
 
 // API Routes
 router.use("/api", apiRoutes );
+// HTML Routes below ******
 
-// // dashboard route 
-// router.get('/', isAuthenticated, function (req, res) {
-//   // if the user is authenticated redirect to dashboard
-//   res.redirect('/dashboard');
-// });
-
-// LOGIN route
-router.post('/api/login', passport.authenticate('local'), function(req, res) {
-     res.json(req.user);
-});
-
-// dashboard route attempt from saturday oct 24 
+// route for authenticated pages
 router.get('/authorize', isAuthenticated, function (req, res) {
-  console.log("SERVER SIDE  - Authorize Route HIT")
-  // console.log(req.user)
-  if (req.user){
-    console.log("the user is logged in")
-    userStatus = "Authenticated"
-    res.json(userStatus)
-  } else{
-    userStatus = "Note Authenticated"
-    res.json(userStatus)
+  if (req.user) {
+    console.log("user is logged")
+    res.json("Authorized")
+  } else {
+    console.log("user is not loged in")
+    res.json("Not Authorized")
   }
-});
 
-// router.get("/api/dates", (req, res) => {
-//   console.log("SERVER SIDE - loading community")
-//   dateControllers.getAllDates(req, res);
-// });
+});
 
 router.post('/avatar', upload.single('avatar'), function (req, res, next) {
   console.log("SERVER SIDE - changing the users avatar")
@@ -93,29 +80,11 @@ router.put('/api/password', (req, res) => {
   userController.changeUserPassword(req, res)
 });
 
-
-
-
-
 router.get("/api/messages/match/:id", (req, res) => {
   console.log("SERVER SIDE - loading profile of one user")
   msgControllers.getMsgs(req, res);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-// router.post('/api/dates', (req, res )=> {
-//   dateControllers.newDate(req)  
-// })
 // // If no API routes are hit, send the React app
 // router.use(function(req, res) {
 //     res.sendFile(path.join(__dirname, "../client/build/index.html"));

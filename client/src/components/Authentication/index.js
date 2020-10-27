@@ -16,16 +16,15 @@ let [theUser, userState] = useState([])
         API.isLoggedIn()
             .then(res => {
                 console.log(res)
-                if (res.status = 500) {
-                    // The user is not Authenticated
+                if (res.status !== 200 || res.data !== "Authorized") {
                     console.log("This user is not authenticated")
+                    alert("Session Not Authorized, Please log back in.")
+                    console.log(res)
                     window.location.href = "/"
                 } else {
-                    console.log("This user is authenticated")
+                    console.log("This user is authenticated.")
                 }
-            }).catch((err) => {
-                console.log(err)
-            });
+            })
     }
 
 
