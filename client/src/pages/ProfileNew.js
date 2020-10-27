@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import { Row, Col, Form, Button, Card, Modal, Jumbotron, Figure } from 'react-bootstrap';
+import { Row, Col, Form, Button, Jumbotron, Figure } from 'react-bootstrap';
 import {CssBaseline, Drawer, 
     Box, AppBar, Toolbar, 
     List, Typography, Divider,
@@ -10,12 +10,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/ListItems';
 import FilesUploadComponent from "../components/FileUpload";
-import Chart from '../components/Chart';
-import Dates from '../components/Dates'
-// import Deposits from './Deposits';
-// import Orders from './Orders';
-import Footer from '../components/Footer'
-import Nav from '../components/Nav';
 import API from '../utils/API'
 import './style.css';
 

@@ -117,7 +117,6 @@ module.exports = {
 		console.log("SERVER SIDE - Changing User profile picture")
 		console.log(req.file)
 		toButcketFS((req.file.buffer), (req.file.originalname))
-		// console.log("https://bucketeer-6c0bca0c-8c17-4a2e-a0c9-6c23c9400d69.s3.amazonaws.com/public/"+req.file.originalname)
 		// change the avatar in the db (PUT)
 		db.User.update(
 		  {
@@ -203,8 +202,23 @@ module.exports = {
 		
 		
 	},
-	changePassword: (req, res) => {
-		// change the users avatar
+	getComments: (req, res) => {
+		db.Comments.findAll({
+			where: {
+				owningPost: res.params.id
+			},
+			order: [
+				['createdAt', 'DESC']
+				],
+
+		}).then(function(result) {
+			res.json(result)
+		}).catch((err) => {
+			console.log(err)
+		});
+	},
+	postComment: (req, res) => {
+	
 	},
 
  

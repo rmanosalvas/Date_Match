@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Card, NavLink, Media, Button} from 'react-bootstrap'
 import { makeStyles } from '@material-ui/core/styles';
-import OtherProfileMod from "../OtherProfileMod"
-import DeleteButton from '../DeleteButton'
-import Divider from "@material-ui/core/Divider";
-
-import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";

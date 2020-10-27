@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardDeck, Figure, Image,Jumbotron} from 'react-bootstrap';
+import { Figure, Image } from 'react-bootstrap';
 import API from '../utils/API';
-// import Slider from './Slider';
 import './style.css';
 
 

@@ -5,10 +5,7 @@ import {CssBaseline, Drawer,
     List, Typography, Divider,
     IconButton, Badge, Container, Grid, Paper, Link, makeStyles } from '@material-ui/core/';
 import { mainListItems, secondaryListItems } from "../components/ListItems";
-import Chart from '../components/Chart';
-import Dates from '../components/Dates'
-import Footer from '../components/Footer'
-import { Card, CardDeck, Figure, Image,Jumbotron} from 'react-bootstrap';
+import { Figure, Image } from 'react-bootstrap';
 import API from '../utils/API';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -69,7 +66,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
+                Date Match
       </Link>{' '}
             {new Date().getFullYear()}
             {'.'}

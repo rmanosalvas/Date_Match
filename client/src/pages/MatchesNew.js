@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-// import { makeStyles } from '@material-ui/core/styles';
 import {CssBaseline, Drawer, 
     Box, AppBar, Toolbar, 
     List, Typography, Divider,
@@ -9,12 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/ListItems';
-import Chart from '../components/Chart';
-import Dates from '../components/Dates'
-// import Deposits from './Deposits';
-// import Orders from './Orders';
-import Footer from '../components/Footer'
-import { Card, Media } from 'react-bootstrap';
+import Media from 'react-bootstrap/Media';
 import SomeUser from '../components/MatchedUser'
 import API from '../utils/API'
 

@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Container, Row, Col, Form, Button, Card, Modal, } from 'react-bootstrap';
+import React from 'react'
 import API from '../../utils/API';
 
 function Logout(){

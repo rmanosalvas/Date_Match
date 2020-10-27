@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button, Card, Modal, Jumbotron, Figure } from 'react-bootstrap';
+import { Modal, Jumbotron, Figure } from 'react-bootstrap';
 import ListItem from "@material-ui/core/ListItem";
 import ChatIcon from '@material-ui/icons/Chat';
 import API from '../../utils/API'
