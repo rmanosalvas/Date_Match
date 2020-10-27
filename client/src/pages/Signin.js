@@ -1,29 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import {Avatar, Button, CssBaseline, TextField, 
+  Link, Paper, Box, Grid, Typography, makeStyles} from '@material-ui/core/';
 import API from '../utils/API';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +49,7 @@ export default function SignInSide() {
             console.log("logging on")
             window.location.href = "/dashboard";
         })
-        .catch(err => console.log(err))
+        .catch(err => alert("That password is incorrect!"))
     }
 
     function handleInputChange(event) {
@@ -140,7 +120,6 @@ export default function SignInSide() {
               className={classes.submit}
               className="btn btn-md btn-primary col"
               onClick={handleFormSubmit}
-              
             >
               Sign In
             </Button>
@@ -157,7 +136,7 @@ export default function SignInSide() {
               </Grid>
             </Grid>
             <Box mt={5}>
-              <Copyright />
+              Date Match - Created by Don Tran, Ricardo Manosalvas, and James Hudgins
             </Box>
           </form>
         </div>

@@ -8,10 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Password from './pages/Password';
 import Recover from './pages/Recover';
 import Matches from './pages/Matches'
-import Newpage from './pages/Newpage'
 import Nav from './components/Nav'
-import Community from './pages/Community'
-import Profile from './pages/Profile'
 import Authentication from './components/Authentication'
 import './App.css';
 import MatchesNew from './pages/MatchesNew'
@@ -56,10 +53,6 @@ function App() {
           <Route exact path='/profile' >
             <Authentication />
             <ProfileNew />
-            {/* <Profile /> */}
-          </Route>
-          <Route exact path='/newpage' >
-            <Newpage />
           </Route>
         </Switch>
       </div>

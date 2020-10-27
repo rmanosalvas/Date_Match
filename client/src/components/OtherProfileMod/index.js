@@ -8,8 +8,7 @@ import API from '../../utils/API'
 
 
 function OtherProfileMod({ dateInfo }) {
-    console.log("date info from OtherProfileMod")
-    console.log(dateInfo.UserId)
+
 
     const [profile, setProfile] = useState([])
     const [currentProfile, setCurrentProfile] = useState([])
@@ -24,7 +23,6 @@ function OtherProfileMod({ dateInfo }) {
     function getCurrentUser(){
         API.getProfileInfo(currentProfile.id)
         .then(res => {
-            console.log("getting the current user to be matched with")
             console.log(res)
             setCurrentProfile(res.data)
         })

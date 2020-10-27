@@ -4,7 +4,6 @@ import "./style.css"
 import API from '../../utils/API';
 import Logout from '../Logout'
 import CreateDate from '../CreateDate'
-import Profile from "../../pages/Profile";
 
 
 
